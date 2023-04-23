@@ -6,7 +6,7 @@ import java.util.*;
 // import java.io.*;
 
 public class ReadFile {
-    private static HashMap<String, Integer> labels =
+    public static HashMap<String, Integer> labels =
             new HashMap<String, Integer>();
         
     private static ArrayList<Instructions> instructionsList =
@@ -25,7 +25,7 @@ public class ReadFile {
     }
     public static void first_parse(){
         try{
-            File myObj = new File("lab2/src/test2.asm");
+            File myObj = new File("src/test5.asm");
             Scanner myReader = new Scanner(myObj);
             int prog_counter = 0;
             int flag = 0;
@@ -72,9 +72,10 @@ public class ReadFile {
         }
     }
     public static void second_parse(){
+        System.out.println("\nSecond Parse");
         try {
             int line = 0;
-            File myObj = new File("lab2/src/test2.asm");
+            File myObj = new File("src/test5.asm");
             Scanner myReader = new Scanner(myObj);
             // read each line and trim to place in array
             while (myReader.hasNextLine()) {
@@ -107,6 +108,7 @@ public class ReadFile {
                     tempDataArr.removeAll(Arrays.asList(tempDataArr.
                             get(0)));
                 }
+
                 // check if line is empty after removing label
                 if(tempDataArr.isEmpty()){
                     continue;
@@ -134,13 +136,17 @@ public class ReadFile {
                 System.out.print(instr.instruction);
                 for(String operand : instr.operands)
                 {
-                    System.out.print(" "+ operand);
+                    System.out.print(" " + operand);
+                }
+                System.out.print(" " + instr.getType());
+                if(!(instr.getType().equals("J"))){
+                    System.out.print(" " +instr.binary);
                 }
                 System.out.println();
             }
 
             Instructions instr = instructionsList.get(6);
-            System.out.println(convertToBinary(instr));
+            //System.out.println(convertToBinary(instr));
 
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
@@ -164,4 +170,6 @@ public class ReadFile {
 
         return binary_instr;
     }
+
+
 }

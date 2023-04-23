@@ -8,6 +8,9 @@ public class Init {
     public static HashMap<String, String> memoryInstr = new HashMap<>();
     public static HashMap<String, String> jumpInstr = new HashMap<>();
     public static HashMap<String, String> registers = new HashMap<>();
+
+    public static HashMap<String, String> ITypeOpCodes = new HashMap<>();
+
     public static void initRegisters(){
         // Init all available registers
         registers.put("$zero", "00000");
@@ -51,6 +54,7 @@ public class Init {
         arithmeticInstr.put("add", "100000");
         arithmeticInstr.put("sub", "100010");
         arithmeticInstr.put("slt", "101010");
+        arithmeticInstr.put("sll", "000000");
 
         // Immediate instruction
         // input: op, rt, rs, immediate(16-bit)
@@ -60,6 +64,11 @@ public class Init {
         // Shift Instruction
         // input: funct, rd, rt, sa
         // output: op, rs, rt, rd, shamt, funct
+        ITypeOpCodes.put("addi", "001000");
+        ITypeOpCodes.put("beq", "000100");
+        ITypeOpCodes.put("bne", "000101");
+        ITypeOpCodes.put("lw", "100011");
+        ITypeOpCodes.put("sw", "101011");
 
         // Comparison Instructions
         // input: op, rs, rt, offset(16-bit)
