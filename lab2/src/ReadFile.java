@@ -1,15 +1,20 @@
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.lang.reflect.Array;
+// import java.lang.reflect.Array;
 import java.util.*;
-import java.lang.*;
-import java.io.*;
+// import java.lang.*;
+// import java.io.*;
 
 public class ReadFile {
     private static HashMap<String, Integer> labels =
             new HashMap<String, Integer>();
+        
     private static ArrayList<Instructions> instructionsList =
             new ArrayList<Instructions>();
+
+    public static HashMap<String, Integer> getLabels(){
+        return labels;
+    }
 
     public static void main(String[] args) {
         Init.initInstructions(); // init supported instructions
@@ -20,7 +25,7 @@ public class ReadFile {
     }
     public static void first_parse(){
         try{
-            File myObj = new File("src/test5.asm");
+            File myObj = new File("lab2/src/test2.asm");
             Scanner myReader = new Scanner(myObj);
             int prog_counter = 0;
             int flag = 0;
@@ -68,7 +73,8 @@ public class ReadFile {
     }
     public static void second_parse(){
         try {
-            File myObj = new File("src/test5.asm");
+            int line = 0;
+            File myObj = new File("lab2/src/test2.asm");
             Scanner myReader = new Scanner(myObj);
             // read each line and trim to place in array
             while (myReader.hasNextLine()) {
@@ -117,12 +123,23 @@ public class ReadFile {
 
                 // create a new instruction object and add it to
                 //     instructionsList
-                Instructions newInstr = new Instructions(operation, operands);
+                Instructions newInstr = new Instructions(operation, operands, line);
                 instructionsList.add(newInstr);
+                line++;
             }
             // while loop exited
             myReader.close();
-            Instructions instr = instructionsList.get(15);
+
+            for(Instructions instr: instructionsList){
+                System.out.print(instr.instruction);
+                for(String operand : instr.operands)
+                {
+                    System.out.print(" "+ operand);
+                }
+                System.out.println();
+            }
+
+            Instructions instr = instructionsList.get(6);
             System.out.println(convertToBinary(instr));
 
         } catch (FileNotFoundException e) {
@@ -134,12 +151,17 @@ public class ReadFile {
     public static String convertToBinary(Instructions instr){
         String binary_instr="";
         if(Init.arithmeticInstr.containsKey(instr.instruction)){
-            binary_instr = Conversions.arithmetic(instr);
+            binary_instr = Conversions.arithmeticInsString(instr);
         }
         else if(Objects.equals(instr.instruction, "addi"))
-                binary_instr = Conversions.addi(instr);
+            binary_instr = Conversions.addiInstString(instr);
+
         else if(Objects.equals(instr.instruction, "sll"))
-                binary_instr = Conversions.shift(instr);
+            binary_instr = Conversions.shiftInstString(instr);
+
+        else if(Init.comparisonInstr.containsKey(instr.instruction))
+            binary_instr = Conversions.comparisonInstrString(instr);
+
         return binary_instr;
     }
 }
