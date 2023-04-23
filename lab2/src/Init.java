@@ -1,6 +1,8 @@
 import java.util.HashMap;
 
 public class Init {
+    // Init class to initialize all supported instructions and registers
+    //  by mapping their string name to their respective binary values
     public static HashMap<String, String> arithmeticInstr = new HashMap<>();
     public static HashMap<String, String> comparisonInstr = new HashMap<>();
     public static HashMap<String, String> memoryInstr = new HashMap<>();

@@ -1,6 +1,11 @@
+import java.util.HashMap;
+
 public class Conversions {
+    // Conversions class that holds methods to convert all possible 
+    //  instructionas to binary text
     private static String binary_instr = "";
-    public static String arithmetic(Instructions instr){
+
+    public static String arithmeticInsString(Instructions instr){
         // input: op, rd, rs, rt
         // rd = instr.operands[0]
         // rs = instr.operands[1]
@@ -23,7 +28,7 @@ public class Conversions {
         return binary_instr;
     }
 
-    public static String addi(Instructions instr){
+    public static String addiInstString(Instructions instr){
         // input: op, rt, rs, immediate(16-bit)
         // output: op, rs, rt, immediate(16-bit)
         // rt = instr.operands[0]
@@ -50,7 +55,7 @@ public class Conversions {
         return binary_instr;
     }
 
-    public static String shift(Instructions instr){
+    public static String shiftInstString(Instructions instr){
         // input: funct, rd, rt, sa
         // output: op, rs, rt, rd, shamt, funct
         // rs = 00000
@@ -75,6 +80,45 @@ public class Conversions {
 
         binary_instr = op + " " + rs + " " + rt + " " + rd + " " + sa + " "
                 + funct;
+        return binary_instr;
+    }
+
+    public static String comparisonInstrString(Instructions instr){
+        // input: op, rs, rt, label
+        // output: op, rs, rt, label offset(16-bit)
+        // rs = operands[0]
+        // rt = operands[1]
+        // label = operands[2]
+        HashMap<String, Integer> labels = ReadFile.getLabels();
+        String op = Init.comparisonInstr.get(instr.instruction);
+
+        String rs = instr.operands.get(0);
+        rs = Init.registers.get(rs);
+
+        String rt = instr.operands.get(1);
+        rt = Init.registers.get(rt);
+
+        String label = instr.operands.get(2); // returns label name
+
+        int instr_line = instr.line;
+        int label_line = labels.get(label);
+        // calculate distance from instruction to label
+        int offset = label_line - (instr_line + 1);
+
+        // returns 32 bit for negative values, and unfixed for positive
+        //   values
+        String bin_offset = Integer.toBinaryString(offset);
+        // if negative, then reduce to 16 bit
+        if(offset < 0){
+            bin_offset = bin_offset.substring(16, 32);
+        }
+        // else increase to 16 bit
+        else if(offset >= 0){
+            while(bin_offset.length() < 16)
+                bin_offset = "0" + bin_offset;
+        }
+
+        binary_instr = op + " " + rs + " " + rt + " " + bin_offset;
         return binary_instr;
     }
 }
