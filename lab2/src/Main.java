@@ -26,7 +26,7 @@ public class Main {
     }
     public static void first_parse(){
         try{
-            File myObj = new File("src/test3.asm");
+            File myObj = new File("src/test4.asm");
             Scanner myReader = new Scanner(myObj);
             int prog_counter = 0;
             int flag = 0;
@@ -63,9 +63,7 @@ public class Main {
                 }
                 prog_counter++;
             }
-            System.out.println(labels);
             myReader.close();
-            System.out.println("------------");
 
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
@@ -75,7 +73,7 @@ public class Main {
     public static void second_parse(){
         try {
             int line = 0;
-            File myObj = new File("src/test3.asm");
+            File myObj = new File("src/test4.asm");
             Scanner myReader = new Scanner(myObj);
             // read each line and trim to place in array
             while (myReader.hasNextLine()) {
@@ -126,56 +124,30 @@ public class Main {
                 // create a new instruction object and add it to
                 //     instructionsList
                 Instructions newInstr = new Instructions(operation, operands, line);
-                instructionsList.add(newInstr);
+                if(!(newInstr.getType().equals("Invalid"))){
+                    instructionsList.add(newInstr);
+                }
+                else{Init.InvalidInstr.add(newInstr);}
                 line++;
             }
-            // while loop exited
-            myReader.close();
 
-            for(Instructions instr: instructionsList){
-                System.out.print(instr.line + 1 + " " + instr.instruction);
-                for(String operand : instr.operands)
-                {
-                    System.out.print(" " + operand);
-                }
-                System.out.print(" " + instr.getType());
-                System.out.println();
-            }
-            System.out.println("\n======================================================\n");
-
-            for(Instructions instr: instructionsList){
-                System.out.println(instr.line + 1 + " " + instr.instruction + " " + instr.binary);
-            }
-
-            System.out.println("\n======================================================\n");
+            //PRINT TO TERMINAL
             for(Instructions instr: instructionsList){
                 System.out.println(instr.binary);
             }
+            if(!Init.InvalidInstr.isEmpty()){
+                for (Instructions invalid_instr:Init.InvalidInstr) {
+                    System.out.println("invalid instruction: " + invalid_instr.instruction);
+                }
+            }
 
-            Instructions instr = instructionsList.get(6);
-            //System.out.println(convertToBinary(instr));
+            // while loop exited
+            myReader.close();
 
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-    }
-
-    public static String convertToBinary(Instructions instr){
-        String binary_instr="";
-        if(Init.arithmeticInstr.containsKey(instr.instruction)){
-            binary_instr = Conversions.arithmeticInsString(instr);
-        }
-        else if(Objects.equals(instr.instruction, "addi"))
-            binary_instr = Conversions.addiInstString(instr);
-
-        else if(Objects.equals(instr.instruction, "sll"))
-            binary_instr = Conversions.shiftInstString(instr);
-
-        else if(Init.comparisonInstr.containsKey(instr.instruction))
-            binary_instr = Conversions.comparisonInstrString(instr);
-
-        return binary_instr;
     }
 
 

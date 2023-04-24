@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.LinkedList;
 //CHanging for github
 
 public class Init {
@@ -11,6 +12,8 @@ public class Init {
     public static HashMap<String, String> registers = new HashMap<>();
 
     public static HashMap<String, String> ITypeOpCodes = new HashMap<>();
+
+    public static LinkedList<Instructions> InvalidInstr = new LinkedList<>();
 
     public static void initRegisters(){
         // Init all available registers

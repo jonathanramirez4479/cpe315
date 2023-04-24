@@ -51,7 +51,7 @@ public class Instructions {
             J_TypeConversion();
             return "J";
         } else {
-            throw new IllegalArgumentException("ERROR: " + instruction + " -> Instruction Not Compatible");
+            return "Invalid";
         }
     }
 
