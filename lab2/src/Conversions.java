@@ -89,7 +89,7 @@ public class Conversions {
         // rs = operands[0]
         // rt = operands[1]
         // label = operands[2]
-        HashMap<String, Integer> labels = ReadFile.getLabels();
+        HashMap<String, Integer> labels = Main.getLabels();
         String op = Init.comparisonInstr.get(instr.instruction);
 
         String rs = instr.operands.get(0);

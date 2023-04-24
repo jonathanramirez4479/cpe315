@@ -66,21 +66,23 @@ public class Instructions {
 
         if (instruction.equals("jr")) {
             rs = Init.registers.get(operands.get(0)) + " ";
-            rt = "00000 ";
-            rd = "00000 ";
+            rt = "00000";
+            rd = "00000";
         } else {
-            rs = Init.registers.get(operands.get(0)) + " ";
-            rt = Init.registers.get(operands.get(1)) + " ";
-            rd = Init.registers.get(operands.get(2)) + " ";
+            rd = Init.registers.get(operands.get(0)) + " ";
+            rs = Init.registers.get(operands.get(1)) + " ";
+            rt = Init.registers.get(operands.get(2)) + " ";
             if(instruction.equals("sll")){
-                rd = "00000 ";
+                rd = Init.registers.get(operands.get(0)) + " ";
+                rs = "00000 ";
+                rt = Init.registers.get(operands.get(1)) + " ";
                 shamt = Integer.toBinaryString(Integer.parseInt(operands.get(2)));
-                shamt = String.format("%5s", Integer.toBinaryString(Integer.parseInt(operands.get(2)) & 0xFFFF)).replace(' ', '0');
+                shamt = String.format("%5s", Integer.toBinaryString(Integer.parseInt(operands.get(2)) & 0x1F)).replace(' ', '0');
                 shamt = shamt + " ";
             }
         }
         funct = Init.arithmeticInstr.get(instruction);
-        this.binary = Op + rt + rd + rs + shamt + funct;
+        this.binary = Op + rs + rt + rd + shamt + funct;
     }
 
     private void I_TypeConversion() {
@@ -95,12 +97,14 @@ public class Instructions {
         int Im;
 
         if(instruction.equals("sw") || instruction.equals("lw")){
-            rt = Init.registers.get(operands.get(2)) + " ";
+            rs = Init.registers.get(operands.get(2)) + " ";
+            rt = Init.registers.get(operands.get(0)) + " ";
             Im = Integer.parseInt(operands.get(1));
+
         } else if ((instruction.equals("bne"))  || (instruction.equals("beq"))){ //BNE and BEQ
             rt = Init.registers.get(operands.get(1)) + " ";
             String label = operands.get(2);
-            Im = ReadFile.labels.get(label) - this.line - 1;
+            Im = Main.labels.get(label) - this.line - 1;
 
         } else {
             rt = Init.registers.get(operands.get(1)) + " ";
@@ -120,9 +124,8 @@ public class Instructions {
         //Op[6] Target Address[26]
         String Op = Init.jumpInstr.get(instruction) + " ";
         String tgt = operands.get(0);
-        int tgt_bin = ReadFile.labels.get(tgt) - this.line;
-        String tgt_bin_f = String.format("%26s", Integer.toBinaryString(tgt_bin & 0xFFFF)).replace(' ', '0');
-        tgt_bin_f = tgt_bin_f + " ";
+        int tgt_bin = Main.labels.get(tgt);
+        String tgt_bin_f = String.format("%26s", Integer.toBinaryString(tgt_bin & 0x3FFFFFF)).replace(' ', '0');
         this.binary = Op + tgt_bin_f;
 
     }
