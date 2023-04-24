@@ -1,4 +1,5 @@
 import java.util.HashMap;
+//CHanging for github
 
 public class Init {
     // Init class to initialize all supported instructions and registers
