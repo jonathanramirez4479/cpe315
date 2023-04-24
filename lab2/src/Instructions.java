@@ -105,7 +105,7 @@ public class Instructions {
         } else if ((instruction.equals("bne"))  || (instruction.equals("beq"))){ //BNE and BEQ
             rt = Init.registers.get(operands.get(1)) + " ";
             String label = operands.get(2);
-            Im = Main.labels.get(label) - this.line - 1;
+            Im = lab2.labels.get(label) - this.line - 1;
 
         } else {
             rt = Init.registers.get(operands.get(1)) + " ";
@@ -125,7 +125,7 @@ public class Instructions {
         //Op[6] Target Address[26]
         String Op = Init.jumpInstr.get(instruction) + " ";
         String tgt = operands.get(0);
-        int tgt_bin = Main.labels.get(tgt);
+        int tgt_bin = lab2.labels.get(tgt);
         String tgt_bin_f = String.format("%26s", Integer.toBinaryString(tgt_bin & 0x3FFFFFF)).replace(' ', '0');
         this.binary = Op + tgt_bin_f;
 

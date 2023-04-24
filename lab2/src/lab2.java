@@ -6,7 +6,7 @@ import java.util.*;
 // import java.io.*;
 //CHanging for github
 
-public class Main {
+public class lab2 {
     public static HashMap<String, Integer> labels =
             new HashMap<String, Integer>();
         
