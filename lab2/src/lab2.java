@@ -127,7 +127,10 @@ public class lab2 {
                 if(!(newInstr.getType().equals("Invalid"))){
                     instructionsList.add(newInstr);
                 }
-                else{Init.InvalidInstr.add(newInstr);}
+                else{
+                    Init.InvalidInstr.add(newInstr);
+                    break;
+                }
                 line++;
             }
 
