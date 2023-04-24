@@ -5,7 +5,6 @@ public class Instructions {
     public String instruction;
     public ArrayList<String> operands;
     public int line;
-
     public String binary;
     private String type;
 
@@ -44,11 +43,11 @@ public class Instructions {
         if (Arrays.asList(rType).contains(instruction)) {
             R_TypeConversion();
             return "R";
-
         } else if (Arrays.asList(iType).contains(instruction)) {
             I_TypeConversion();
             return "I";
         } else if (Arrays.asList(jType).contains(instruction)) {
+            J_TypeConversion();
             return "J";
         } else {
             throw new IllegalArgumentException("ERROR: " + instruction + " -> Instruction Not Compatible");
@@ -63,26 +62,25 @@ public class Instructions {
      */
         String Op = "000000 ";
         String shamt = "00000 ";
-
+        String rs, rt, rd, funct;
 
         if (instruction.equals("jr")) {
-            String rs = Init.registers.get(operands.get(0)) + " ";
-            String rt = "00000 ";
-            String rd = "00000 ";
-            String funct = Init.arithmeticInstr.get(instruction) + " ";
+            rs = Init.registers.get(operands.get(0)) + " ";
+            rt = "00000 ";
+            rd = "00000 ";
         } else {
-            String rs = Init.registers.get(operands.get(0)) + " ";
-            String rt = Init.registers.get(operands.get(1)) + " ";
-            String rd = Init.registers.get(operands.get(2)) + " ";
+            rs = Init.registers.get(operands.get(0)) + " ";
+            rt = Init.registers.get(operands.get(1)) + " ";
+            rd = Init.registers.get(operands.get(2)) + " ";
             if(instruction.equals("sll")){
                 rd = "00000 ";
                 shamt = Integer.toBinaryString(Integer.parseInt(operands.get(2)));
                 shamt = String.format("%5s", Integer.toBinaryString(Integer.parseInt(operands.get(2)) & 0xFFFF)).replace(' ', '0');
                 shamt = shamt + " ";
             }
-            String funct = Init.arithmeticInstr.get(instruction) + " ";
-            this.binary = Op + rs + rt + rd + shamt + funct;
         }
+        funct = Init.arithmeticInstr.get(instruction);
+        this.binary = Op + rt + rd + rs + shamt + funct;
     }
 
     private void I_TypeConversion() {
@@ -99,10 +97,10 @@ public class Instructions {
         if(instruction.equals("sw") || instruction.equals("lw")){
             rt = Init.registers.get(operands.get(2)) + " ";
             Im = Integer.parseInt(operands.get(1));
-        } else if ((instruction.equals("bne"))  || (instruction.equals("beq"))){
+        } else if ((instruction.equals("bne"))  || (instruction.equals("beq"))){ //BNE and BEQ
             rt = Init.registers.get(operands.get(1)) + " ";
             String label = operands.get(2);
-            Im = ReadFile.labels.get(label);
+            Im = ReadFile.labels.get(label) - this.line - 1;
 
         } else {
             rt = Init.registers.get(operands.get(1)) + " ";
@@ -110,15 +108,22 @@ public class Instructions {
         }
         String binaryIm = Integer.toBinaryString(Im);
         binaryIm = String.format("%16s", Integer.toBinaryString(Im & 0xFFFF)).replace(' ', '0');
-//        if(binaryIm.length() > 16){
-//            throw new IllegalArgumentException("ERROR: " + Im + " -> Immediate Too large! Exceeds 16 bits");
-//        }
+        if(binaryIm.length() > 16){
+            throw new IllegalArgumentException("ERROR: " + Im + " -> Immediate Too large! Exceeds 16 bits");
+        }
 
         this.binary = Op + rs + rt + binaryIm;
     }
 
     private void J_TypeConversion(){
         //j and jal
+        //Op[6] Target Address[26]
+        String Op = Init.jumpInstr.get(instruction) + " ";
+        String tgt = operands.get(0);
+        int tgt_bin = ReadFile.labels.get(tgt) - this.line;
+        String tgt_bin_f = String.format("%26s", Integer.toBinaryString(tgt_bin & 0xFFFF)).replace(' ', '0');
+        tgt_bin_f = tgt_bin_f + " ";
+        this.binary = Op + tgt_bin_f;
 
     }
 

@@ -55,6 +55,7 @@ public class Init {
         arithmeticInstr.put("sub", "100010");
         arithmeticInstr.put("slt", "101010");
         arithmeticInstr.put("sll", "000000");
+        arithmeticInstr.put("jr",  "001000");
 
         // Immediate instruction
         // input: op, rt, rs, immediate(16-bit)

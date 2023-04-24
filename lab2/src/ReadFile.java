@@ -25,7 +25,7 @@ public class ReadFile {
     }
     public static void first_parse(){
         try{
-            File myObj = new File("src/test5.asm");
+            File myObj = new File("src/test1.asm");
             Scanner myReader = new Scanner(myObj);
             int prog_counter = 0;
             int flag = 0;
@@ -72,10 +72,9 @@ public class ReadFile {
         }
     }
     public static void second_parse(){
-        System.out.println("\nSecond Parse");
         try {
             int line = 0;
-            File myObj = new File("src/test5.asm");
+            File myObj = new File("src/test1.asm");
             Scanner myReader = new Scanner(myObj);
             // read each line and trim to place in array
             while (myReader.hasNextLine()) {
@@ -132,17 +131,21 @@ public class ReadFile {
             // while loop exited
             myReader.close();
 
+//            for(Instructions instr: instructionsList){
+//                System.out.print(instr.instruction);
+//                for(String operand : instr.operands)
+//                {
+//                    System.out.print(" " + operand);
+//                }
+//                System.out.print(" " + instr.getType());
+//                if(!(false)){
+//                    System.out.print(" " +instr.binary);
+//                }
+//                System.out.println();
+//            }
+
             for(Instructions instr: instructionsList){
-                System.out.print(instr.instruction);
-                for(String operand : instr.operands)
-                {
-                    System.out.print(" " + operand);
-                }
-                System.out.print(" " + instr.getType());
-                if(!(instr.getType().equals("J"))){
-                    System.out.print(" " +instr.binary);
-                }
-                System.out.println();
+                System.out.println(instr.binary);
             }
 
             Instructions instr = instructionsList.get(6);
