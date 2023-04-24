@@ -20,13 +20,13 @@ public class Main {
     public static void main(String[] args) {
         Init.initInstructions(); // init supported instructions
         Init.initRegisters(); // init available registers
-        first_parse();
-        second_parse();
+        first_parse(args[0]); //Filename -> args[0]
+        second_parse(args[0]);
         System.exit(0);
     }
-    public static void first_parse(){
+    public static void first_parse(String filename){
         try{
-            File myObj = new File("src/test4.asm");
+            File myObj = new File(filename);
             Scanner myReader = new Scanner(myObj);
             int prog_counter = 0;
             int flag = 0;
@@ -70,10 +70,10 @@ public class Main {
             e.printStackTrace();
         }
     }
-    public static void second_parse(){
+    public static void second_parse(String filename){
         try {
             int line = 0;
-            File myObj = new File("src/test4.asm");
+            File myObj = new File(filename);
             Scanner myReader = new Scanner(myObj);
             // read each line and trim to place in array
             while (myReader.hasNextLine()) {
