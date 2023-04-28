@@ -9,8 +9,7 @@ public class Instructions {
     public String binary;
     private String type;
 
-    public Instructions(String instruction, ArrayList<String> operands,
-                        int line) {
+    public Instructions(String instruction, ArrayList<String> operands, int line) {
         this.instruction = instruction;
         this.operands = operands;
         this.line = line;
@@ -105,7 +104,7 @@ public class Instructions {
         } else if ((instruction.equals("bne"))  || (instruction.equals("beq"))){ //BNE and BEQ
             rt = Init.registers.get(operands.get(1)) + " ";
             String label = operands.get(2);
-            Im = lab3.labels.get(label) - this.line - 1;
+            Im = readFile.labels.get(label) - this.line - 1;
 
         } else {
             rt = Init.registers.get(operands.get(1)) + " ";
@@ -125,7 +124,7 @@ public class Instructions {
         //Op[6] Target Address[26]
         String Op = Init.jumpInstr.get(instruction) + " ";
         String tgt = operands.get(0);
-        int tgt_bin = lab3.labels.get(tgt);
+        int tgt_bin = readFile.labels.get(tgt);
         String tgt_bin_f = String.format("%26s", Integer.toBinaryString(tgt_bin & 0x3FFFFFF)).replace(' ', '0');
         this.binary = Op + tgt_bin_f;
 
