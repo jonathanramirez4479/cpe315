@@ -1,5 +1,5 @@
 import java.util.HashMap;
-
+//changing for github
 public class RegisterFile {
     private static HashMap<String, Integer> RF = new HashMap<>();
     public void initRF(){

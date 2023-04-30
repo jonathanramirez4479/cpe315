@@ -36,7 +36,7 @@ public class lab3 {
             } else if (command.trim().equalsIgnoreCase("q")) {
                 System.exit(0);
             } else if (command.trim().equalsIgnoreCase("d")) {
-                RegisterFile
+
             }
         }
     }

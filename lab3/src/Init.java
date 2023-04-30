@@ -1,6 +1,6 @@
 import java.util.HashMap;
 import java.util.LinkedList;
-//CHanging for github
+ //CHanging for github pt 2
 
 public class Init {
     // Init class to initialize all supported instructions and registers
