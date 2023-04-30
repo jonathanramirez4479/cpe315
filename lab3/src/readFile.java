@@ -11,16 +11,15 @@ public class readFile {
     public static HashMap<String, Integer> labels =
             new HashMap<String, Integer>();
 
-    private static ArrayList<Instructions> instructionsList =
+    public static ArrayList<Instructions> instructionsList =
             new ArrayList<Instructions>();
 
 
-    public static void readFile_main(String filname) {
+    public static void readFile_main(String filename) {
         Init.initInstructions(); // init supported instructions
         Init.initRegisters(); // init available registers
-        first_parse(filname); //Filename -> args[0]
-        second_parse(filname);
-        System.exit(0);
+        first_parse(filename); //Filename -> args[0]
+        second_parse(filename);
     }
     public static void first_parse(String filename){
         try{
@@ -132,15 +131,6 @@ public class readFile {
                 line++;
             }
 
-            //PRINT TO TERMINAL
-            for(Instructions instr: instructionsList){
-                System.out.println(instr.binary);
-            }
-            if(!Init.InvalidInstr.isEmpty()){
-                for (Instructions invalid_instr:Init.InvalidInstr) {
-                    System.out.println("invalid instruction: " + invalid_instr.instruction);
-                }
-            }
 
             // while loop exited
             myReader.close();
@@ -148,6 +138,17 @@ public class readFile {
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+        }
+    }
+
+    public static void printBinary(){
+        for(Instructions instr: instructionsList){
+            System.out.println(instr.binary);
+        }
+        if(!Init.InvalidInstr.isEmpty()){
+            for (Instructions invalid_instr:Init.InvalidInstr) {
+                System.out.println("invalid instruction: " + invalid_instr.instruction);
+            }
         }
     }
 

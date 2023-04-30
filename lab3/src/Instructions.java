@@ -83,6 +83,7 @@ public class Instructions {
         }
         funct = Init.arithmeticInstr.get(instruction);
         this.binary = Op + rs + rt + rd + shamt + funct;
+
     }
 
     private void I_TypeConversion() {
