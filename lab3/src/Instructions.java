@@ -35,7 +35,6 @@ public class Instructions {
     public void setOperands(ArrayList<String> operands) {
         this.operands = operands;
     }
-
     private String setType() {
         String[] rType = {"and", "or", "add", "sll", "sub", "slt", "jr"};
         String[] iType = {"addi", "beq", "bne", "lw", "sw"};
@@ -54,6 +53,15 @@ public class Instructions {
         }
     }
 
+    public void checkOperands(){
+        if (operands.contains("$zero")) { //include check to not iterate every time
+            for (int i = 0; i < operands.size(); i++) {
+                if (operands.get(i).equalsIgnoreCase("$zero")) {
+                    operands.set(i, "$0");
+                }
+            }
+        }
+    }
 
     private void R_TypeConversion() {
     /*

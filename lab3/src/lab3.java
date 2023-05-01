@@ -16,6 +16,21 @@ public class lab3 {
         if(args.length == 1){
             interactiveMode();
         }
+        else ScriptMode(args[1]);
+    }
+
+    private static void ScriptMode(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Process each line of the file here
+                String[] param = line.split(" ");
+                System.out.println("mips> " + param[0]);
+                lab3Functions(param);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
     }
 
     private static void interactiveMode() throws IOException {
@@ -26,71 +41,89 @@ public class lab3 {
             System.out.print("mips> ");
             BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));
             String[] command = reader.readLine().trim().split(" ");
-            if(command[0].equalsIgnoreCase("h")){
-                // show help
-                System.out.println(
-                        "h = show help\n" +
-                        "d = dump register state\n" +
-                        "s = single step through the program (i.e. execute 1 instruction and stop)\n" +
-                        "s num = step through num instructions of the program\n" +
-                        "r = run until the program ends\n" +
-                        "m num1 num2 = display data memory from location num1 to num2\n" +
-                        "c = clear all registers, memory, and the program counter to 0\n" +
-                        "q = exit the program");
-            } else if (command[0].equalsIgnoreCase("q")) {
-                // quit program
-                System.exit(0);
-            } else if (command[0].equalsIgnoreCase("d")) {
-                // dump registers (print register file)
-                RegisterFile.dumpRegs();
-                System.out.println();
+            lab3Functions(command);
+        }
+
+    }
+
+    private static void lab3Functions(String[] params){
+        if(params[0].equalsIgnoreCase("h")){
+            // show help
+            System.out.println(
+                    "h = show help\n" +
+                            "d = dump register state\n" +
+                            "s = single step through the program (i.e. execute 1 instruction and stop)\n" +
+                            "s num = step through num instructions of the program\n" +
+                            "r = run until the program ends\n" +
+                            "m num1 num2 = display data memory from location num1 to num2\n" +
+                            "c = clear all registers, memory, and the program counter to 0\n" +
+                            "q = exit the program\n");
+        } else if (params[0].trim().equalsIgnoreCase("q")) {
+            // quit program
+            System.exit(0);
+        } else if (params[0].trim().equalsIgnoreCase("d")) {
+            // dump registers (print register file)
+            RegisterFile.dumpRegs();
+            System.out.println();
+        }
+        else if(params[0].trim().equalsIgnoreCase("s")){
+            // single step through the program
+            // if only s
+            if(counter == readFile.instructionsList.size()){
+                System.out.println("Sorry, all instructions have been executed");
+                return;
             }
-            else if(command[0].equalsIgnoreCase("s")){
-                // single step through the program
-                // if only s
-                if(counter == readFile.instructionsList.size()){
-                    System.out.println("Sorry, all instructions have been executed");
-                    continue;
-                }
-                if(command.length == 1) {
-                    Instructions currentInstr = readFile.instructionsList.get(counter);
-                    OperationsMap.findOp(currentInstr);
-                    System.out.println("    1 instruction(s) executed");
+            if(params.length == 1) {
+                Instructions currentInstr = readFile.instructionsList.get(counter);
+                OperationsMap.findOp(currentInstr);
+                System.out.println("    1 instruction(s) executed " + currentInstr.instruction);
+                if(!currentInstr.getType().equals("J")) {
                     counter++;
                 }
-            }
-            else if(command[0].equalsIgnoreCase("r")){
-                // run until program stops
-                if(counter == readFile.instructionsList.size()){
-                    System.out.println("Sorry, all instructions have been executed");
-                    continue;
-                }
-                while(counter < readFile.instructionsList.size()){
+            }else if (params.length ==2){
+                for(int cnt = 0; cnt < Integer.parseInt(params[1]); cnt ++){
                     Instructions currentInstr = readFile.instructionsList.get(counter);
                     OperationsMap.findOp(currentInstr);
+                    if(!currentInstr.getType().equals("J")) {
+                        counter++;
+                    }
+                }
+                System.out.println("    " + params[1] +  " instruction(s) executed ");
+            }
+        }
+        else if(params[0].trim().equalsIgnoreCase("r")){
+            // run until program stops
+            while(counter < readFile.instructionsList.size()){
+                Instructions currentInstr = readFile.instructionsList.get(counter);
+                OperationsMap.findOp(currentInstr);
+                if(!currentInstr.getType().equals("J")) {
                     counter++;
                 }
-            }
-            else if (command[0].equalsIgnoreCase("c")){
-                // clear registers, memory and set counter to 0
-                // TODO reset memory
-                counter = 0;
-                RegisterFile.clearRegs();
-                System.out.println("Simulator reset\n");
-            }
-            else if(command[0].equalsIgnoreCase("m")){
-                // display data memory from num1 to num2
-                if(command.length != 3){
-                    System.out.println("Too few or too many arguments");
-                    continue;
+                if(counter == readFile.instructionsList.size()){
+                    break;
                 }
-                int num1 = Integer.parseInt(command[1]);
-                int num2 = Integer.parseInt(command[2]);
-                for(int i = num1; i <= num2; i++){
-                    System.out.println("[" + i + "] = " + memory[i]);
-                }
+            }
+        }
+        else if (params[0].trim().equalsIgnoreCase("c")){
+            // clear registers, memory and set counter to 0
+            // TODO reset memory
+            counter = 0;
+            RegisterFile.clearRegs();
+            System.out.println("Simulator reset\n");
+        }
+        else if(params[0].equalsIgnoreCase("m")){
+            // display data memory from num1 to num2
+            if(params.length != 3){
+                System.out.println("Too few or too many arguments");
+                return;
+            }
+            int num1 = Integer.parseInt(params[1]);
+            int num2 = Integer.parseInt(params[2]);
+            for(int i = num1; i <= num2; i++){
+                System.out.println("[" + i + "] = " + memory[i]);
             }
         }
 
     }
+
 }

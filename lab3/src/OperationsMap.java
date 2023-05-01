@@ -4,6 +4,7 @@ public class OperationsMap {
     // Map of operations for our simulator
     public static void findOp(Instructions instr){
         // first we want a function to decide which operation to perform
+        instr.checkOperands();
         if(instr.instruction.equals("addi")){
             ADDI(instr);
         }
@@ -33,6 +34,15 @@ public class OperationsMap {
         }
         else if(instr.instruction.equals("beq")){
             BEQ(instr);
+        } else if (instr.instruction.equals("j")) {
+            J(instr);
+        } else if (instr.instruction.equals("jr")) {
+            JR(instr);
+        } else if (instr.instruction.equals("slt")) {
+            SLT(instr);
+        } else if (instr.instruction.equals("jal")) {
+            JAL(instr);
+
         }
     }
     public static void ADD(Instructions instr){
@@ -40,6 +50,7 @@ public class OperationsMap {
         // rd = rs + rt
         Integer rs = RegisterFile.RF.get(instr.operands.get(1));
         Integer rt = RegisterFile.RF.get(instr.operands.get(2));
+
         Integer rd = rs + rt;
         // replace old rt with new rt
         RegisterFile.RF.replace(instr.operands.get(0), rd);
@@ -65,8 +76,9 @@ public class OperationsMap {
     public static void SLL(Instructions instr){
         // sll rd, rt, sa
         // rd = rt << sa
+        System.out.println(instr.operands);
         Integer rt = RegisterFile.RF.get(instr.operands.get(1));
-        Integer sa = RegisterFile.RF.get(instr.operands.get(2));
+        Integer sa = Integer.parseInt(instr.operands.get(2)); //This will be a constant
         Integer rd = rt << sa;
         RegisterFile.RF.replace(instr.operands.get(0), rd);
     }
@@ -80,10 +92,11 @@ public class OperationsMap {
         RegisterFile.RF.replace(instr.operands.get(0), rd);
     }
     public static void SLT(Instructions instr){
-
+        System.out.println(instr.operands);
     }
     public static void JR(Instructions instr){
-
+        // gets content of register (operand[0]) and sets it to PC
+        lab3.counter = RegisterFile.RF.get(instr.operands.get(0)) - 1;
     }
     public static void ADDI(Instructions instr){
         // addi rt, rs, imm
@@ -100,7 +113,7 @@ public class OperationsMap {
         Integer rs = RegisterFile.RF.get(instr.operands.get(0));
         Integer rt = RegisterFile.RF.get(instr.operands.get(1));
         Integer offset = readFile.labels.get(instr.operands.get(2));
-        if(rt == rs){
+        if(!rt.equals(rs)){
             lab3.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
         }
     }
@@ -110,7 +123,7 @@ public class OperationsMap {
         Integer rs = RegisterFile.RF.get(instr.operands.get(0));
         Integer rt = RegisterFile.RF.get(instr.operands.get(1));
         Integer offset = readFile.labels.get(instr.operands.get(2));
-        if(rt != rs){
+        if(!rt.equals(rs)){
             lab3.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
         }
     }
@@ -131,9 +144,13 @@ public class OperationsMap {
         lab3.memory[imm + rs] = rt; // store rt in memory
     }
     public static void J(Instructions instr){
-
+        // Sets PC to corresponding label
+        lab3.counter = readFile.labels.get(instr.operands.get(0));
     }
     public static void JAL(Instructions instr){
-
+        // Sets $ra to current count, then replaces PC to label
+        int newLocation = readFile.labels.get(instr.operands.get(0)); // get jump location
+        RegisterFile.RF.replace("$ra", lab3.counter); // set $ra to current line
+        lab3.counter = newLocation; //set new location
     }
 }
