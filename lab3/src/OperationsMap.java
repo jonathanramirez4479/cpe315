@@ -22,6 +22,18 @@ public class OperationsMap {
         else if(instr.instruction.equals("sll")){
             SLL(instr);
         }
+        else if(instr.instruction.equals("lw")){
+            LW(instr);
+        }
+        else if(instr.instruction.equals("sw")){
+            SW(instr);
+        }
+        else if(instr.instruction.equals("bne")){
+            BNE(instr);
+        }
+        else if(instr.instruction.equals("beq")){
+            BEQ(instr);
+        }
     }
     public static void ADD(Instructions instr){
         // add rd, rs, rt
@@ -80,19 +92,43 @@ public class OperationsMap {
         Integer imm = Integer.parseInt(instr.operands.get(2));
         // reassign rt with sum
         Integer rt = rs + imm;
-        RegisterFile.RF.replace(instr.operands.get(0), 10); // replace reg value with new rt
+        RegisterFile.RF.replace(instr.operands.get(0), rt); // replace reg value with new rt
     }
     public  static void BEQ(Instructions instr){
-
+        // bne rs, rt, offset
+        // if(rt == rs) go to offset
+        Integer rs = RegisterFile.RF.get(instr.operands.get(0));
+        Integer rt = RegisterFile.RF.get(instr.operands.get(1));
+        Integer offset = readFile.labels.get(instr.operands.get(2));
+        if(rt == rs){
+            lab3.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
+        }
     }
     public static void BNE(Instructions instr){
-
+        // bne rs, rt, offset
+        // if(rt != rs) go to offset
+        Integer rs = RegisterFile.RF.get(instr.operands.get(0));
+        Integer rt = RegisterFile.RF.get(instr.operands.get(1));
+        Integer offset = readFile.labels.get(instr.operands.get(2));
+        if(rt != rs){
+            lab3.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
+        }
     }
     public static void LW(Instructions instr){
-
+        // lw rt, imm(rs)
+        // rt = memory[immm + rs]
+        Integer imm = Integer.parseInt(instr.operands.get(1));
+        Integer rs = RegisterFile.RF.get(instr.operands.get(2));
+        Integer rt = lab3.memory[imm + rs]; // access memory
+        RegisterFile.RF.replace(instr.operands.get(0), rt); // store new rt reg value
     }
     public static void SW(Instructions instr){
-
+        // sw rt, imm(rs)
+        // memory[imm + rs] = rt
+        Integer rt = RegisterFile.RF.get(instr.operands.get(0));
+        Integer imm = Integer.parseInt(instr.operands.get(1));
+        Integer rs = RegisterFile.RF.get(instr.operands.get(2));
+        lab3.memory[imm + rs] = rt; // store rt in memory
     }
     public static void J(Instructions instr){
 

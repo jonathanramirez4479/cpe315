@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="register file">
-      <change afterPath="$PROJECT_DIR$/src/OperationsMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Init.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Init.java" afterDir="false" />
+    <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/newtest2.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/newtest3.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OperationsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OperationsMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RegisterFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegisterFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/readFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/readFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682708586282</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Things added&#10;lab3.java:&#10;- pc and data array&#10;- conditions to check for s and c commands&#10;Operations.java:&#10;- method to check instruction&#10;- arithmetic instructions working (storing registers)&#10;- initialized the other methods (unfinished)&#10;RegisterFile.java:&#10;- finished the print statement for printing reg values&#10;- clear reg's method&#10;&#10;also included a new test (test1 from new lab prompt)">
+      <created>1682914237787</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682914237787</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -82,6 +90,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="register file" />
-    <option name="LAST_COMMIT_MESSAGE" value="register file" />
+    <MESSAGE value="Things added&#10;lab3.java:&#10;- pc and data array&#10;- conditions to check for s and c commands&#10;Operations.java:&#10;- method to check instruction&#10;- arithmetic instructions working (storing registers)&#10;- initialized the other methods (unfinished)&#10;RegisterFile.java:&#10;- finished the print statement for printing reg values&#10;- clear reg's method&#10;&#10;also included a new test (test1 from new lab prompt)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Things added&#10;lab3.java:&#10;- pc and data array&#10;- conditions to check for s and c commands&#10;Operations.java:&#10;- method to check instruction&#10;- arithmetic instructions working (storing registers)&#10;- initialized the other methods (unfinished)&#10;RegisterFile.java:&#10;- finished the print statement for printing reg values&#10;- clear reg's method&#10;&#10;also included a new test (test1 from new lab prompt)" />
   </component>
 </project>

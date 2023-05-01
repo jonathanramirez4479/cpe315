@@ -36,7 +36,7 @@ public class RegisterFile {
     }
 
     public static void dumpRegs(){
-        System.out.println( "pc = " + 0 + "\n" + //TODO change PC val
+        System.out.println( "pc = " + lab3.counter + "\n" + //TODO change PC val
                             "$0 = " + RF.get("$0") + "           " +
                             "$v0 = " + RF.get("$v0")  + "          " +
                             "$v1 = " + RF.get("$v1")  + "          " +
