@@ -7,7 +7,6 @@ import java.util.Scanner;
 //changing for github
 public class readFile {
 
-
     public static HashMap<String, Integer> labels =
             new HashMap<String, Integer>();
 
@@ -25,8 +24,8 @@ public class readFile {
         try{
             File myObj = new File(filename);
             Scanner myReader = new Scanner(myObj);
-            int prog_counter = 0;
             int flag = 0;
+            int prog_counter = 0;
             while(myReader.hasNextLine()){
                 String data = myReader.nextLine();
                 // remove beginning and trailing whitespace
@@ -130,8 +129,6 @@ public class readFile {
                 }
                 line++;
             }
-
-
             // while loop exited
             myReader.close();
 

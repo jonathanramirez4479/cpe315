@@ -61,7 +61,7 @@ public class Init {
         arithmeticInstr.put("sll", "000000");
         arithmeticInstr.put("jr",  "001000");
 
-        // Immediate instruction
+        // Immediate instruction (addi only thus far)
         // input: op, rt, rs, immediate(16-bit)
         // output: op, rs, rt, immediate(16-bit)
 

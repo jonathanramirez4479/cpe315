@@ -130,7 +130,4 @@ public class Instructions {
         this.binary = Op + tgt_bin_f;
 
     }
-
-
-
 }

@@ -1,9 +1,12 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 //changing for github
 public class RegisterFile {
-    private static HashMap<String, Integer> RF = new HashMap<>();
-    public void initRF(){
-        RF.put("$zero", 0);
+
+    public static HashMap<String, Integer> RF = new HashMap<>();
+    public static void initRF(){
+        // reg, reg_val
+        RF.put("$0", 0);
         RF.put("$v0", 0);
         RF.put("$v1", 0);
         RF.put("$a0", 0);
@@ -32,12 +35,12 @@ public class RegisterFile {
         RF.put("$ra", 0);
     }
 
-    public void dumpRegs(){
+    public static void dumpRegs(){
         System.out.println( "pc = " + 0 + "\n" + //TODO change PC val
-                            "$0 = " + RF.get("$zero") + "          " +
+                            "$0 = " + RF.get("$0") + "           " +
                             "$v0 = " + RF.get("$v0")  + "          " +
                             "$v1 = " + RF.get("$v1")  + "          " +
-                            "$a1 = " + RF.get("$a0")  + "          \n" +
+                            "$a0 = " + RF.get("$a0")  + "          \n" +
 
                             "$a1 = " + RF.get("$a1") + "          " +
                             "$a2 = " + RF.get("$a2")  + "          " +
@@ -45,12 +48,32 @@ public class RegisterFile {
                             "$t0 = " + RF.get("$t0")  + "          \n" +
 
                             "$t1 = " + RF.get("$t1") + "          " +
-                            "$v0 = " + RF.get("$v0")  + "          " +
-                            "$v1 = " + RF.get("$v1")  + "          " +
-                            "$a1 = " + RF.get("$a0")  + "          \n"
+                            "$t2 = " + RF.get("$t2")  + "          " +
+                            "$t3 = " + RF.get("$t3")  + "          " +
+                            "$t4 = " + RF.get("$t4")  + "          \n" +
 
+                            "$t5 = " + RF.get("$t5") + "          " +
+                            "$t6 = " + RF.get("$t6") + "          " +
+                            "$t7 = " + RF.get("$t7") + "          " +
+                            "$s0 = " + RF.get("$s0") + "          \n" +
 
+                            "$s1 = " + RF.get("$s1") + "          " +
+                            "$s2 = " + RF.get("$s2") + "          " +
+                            "$s3 = " + RF.get("$s3") + "          " +
+                            "$s4 = " + RF.get("$s4") + "          \n" +
+
+                            "$s5 = " + RF.get("$s5") + "          " +
+                            "$s6 = " + RF.get("$s6") + "          " +
+                            "$s7 = " + RF.get("$s7") + "          " +
+                            "$t8 = " + RF.get("$t8") + "          \n" +
+
+                            "$t9 = " + RF.get("$t9") + "          " +
+                            "$sp = " + RF.get("$sp") + "          " +
+                            "$ra = " + RF.get("$ra") + "          \n"
         );
+    }
+    public static void clearRegs(){
+        initRF();
     }
 
 }

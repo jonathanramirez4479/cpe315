@@ -7,7 +7,8 @@ import java.util.*;
 //CHanging for github
 
 public class lab3 {
-
+    private static int[] memory = new int[8192]; // data memory
+    public static int counter = 0; // program counter
     public static void main(String[] args) throws IOException {
         readFile.readFile_main(args[0]);
 
@@ -15,11 +16,13 @@ public class lab3 {
         if(args.length == 1){
             interactiveMode();
         }
-
     }
 
     private static void interactiveMode() throws IOException {
-        while (true){
+        RegisterFile.initRF(); // init register file
+        int instrMemSize = readFile.instructionsList.size();
+
+        while (counter < readFile.instructionsList.size()){
             System.out.print("mips> ");
             BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));
             String command = reader.readLine();
@@ -36,7 +39,16 @@ public class lab3 {
             } else if (command.trim().equalsIgnoreCase("q")) {
                 System.exit(0);
             } else if (command.trim().equalsIgnoreCase("d")) {
-
+                RegisterFile.dumpRegs();
+            }
+            else if(command.trim().equalsIgnoreCase("s")){
+                    Instructions currentInstr = readFile.instructionsList.get(counter);
+                    OperationsMap.findOp(currentInstr);
+                    counter++;
+            }
+            else if (command.trim().equalsIgnoreCase("c")){
+                RegisterFile.clearRegs();
+                System.out.println("Simulator reset\n");
             }
         }
     }
