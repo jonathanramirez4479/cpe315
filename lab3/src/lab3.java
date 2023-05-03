@@ -9,7 +9,6 @@ import java.util.*;
 public class lab3 {
     public static int[] memory = new int[8192]; // data memory
     public static int counter = 0; // program counter
-    public static int maxcount = 0;
     public static void main(String[] args) throws IOException {
         readFile.readFile_main(args[0]);
 
@@ -26,7 +25,11 @@ public class lab3 {
             while ((line = reader.readLine()) != null) {
                 // Process each line of the file here
                 String[] param = line.split(" ");
-                System.out.println("mips> " + param[0]);
+                System.out.print("mips> ");
+                for(int i = 0; i < param.length; i++){
+                    System.out.print(param[i] + " ");
+                }
+                System.out.println();
                 lab3Functions(param);
             }
         } catch (IOException e) {
