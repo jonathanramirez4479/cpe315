@@ -76,7 +76,6 @@ public class OperationsMap {
     public static void SLL(Instructions instr){
         // sll rd, rt, sa
         // rd = rt << sa
-        System.out.println(instr.operands);
         Integer rt = RegisterFile.RF.get(instr.operands.get(1));
         Integer sa = Integer.parseInt(instr.operands.get(2)); //This will be a constant
         Integer rd = rt << sa;
@@ -92,7 +91,7 @@ public class OperationsMap {
         RegisterFile.RF.replace(instr.operands.get(0), rd);
     }
     public static void SLT(Instructions instr){
-        System.out.println(instr.operands);
+
     }
     public static void JR(Instructions instr){
         // gets content of register (operand[0]) and sets it to PC

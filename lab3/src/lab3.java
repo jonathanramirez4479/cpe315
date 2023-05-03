@@ -50,7 +50,7 @@ public class lab3 {
         if(params[0].equalsIgnoreCase("h")){
             // show help
             System.out.println(
-                    "h = show help\n" +
+                    "\nh = show help\n" +
                             "d = dump register state\n" +
                             "s = single step through the program (i.e. execute 1 instruction and stop)\n" +
                             "s num = step through num instructions of the program\n" +
@@ -76,16 +76,18 @@ public class lab3 {
             if(params.length == 1) {
                 Instructions currentInstr = readFile.instructionsList.get(counter);
                 OperationsMap.findOp(currentInstr);
-                System.out.println("    1 instruction(s) executed " + currentInstr.instruction);
+                System.out.println("    1 instruction(s) executed ");
                 if(!currentInstr.getType().equals("J")) {
                     counter++;
                 }
-            }else if (params.length ==2){
-                for(int cnt = 0; cnt < Integer.parseInt(params[1]); cnt ++){
+            }else if (params.length == 2){
+                int i = Integer.parseInt((params[1]));
+                while(i > 0 && counter < readFile.instructionsList.size()){
                     Instructions currentInstr = readFile.instructionsList.get(counter);
                     OperationsMap.findOp(currentInstr);
                     if(!currentInstr.getType().equals("J")) {
                         counter++;
+                        i--;
                     }
                 }
                 System.out.println("    " + params[1] +  " instruction(s) executed ");
@@ -106,10 +108,10 @@ public class lab3 {
         }
         else if (params[0].trim().equalsIgnoreCase("c")){
             // clear registers, memory and set counter to 0
-            // TODO reset memory
             counter = 0;
-            RegisterFile.clearRegs();
-            System.out.println("Simulator reset\n");
+            RegisterFile.clearRegs(); // calls initRF
+            Arrays.fill(memory, 0); // clears memory
+            System.out.println("        Simulator reset\n");
         }
         else if(params[0].equalsIgnoreCase("m")){
             // display data memory from num1 to num2
@@ -122,6 +124,7 @@ public class lab3 {
             for(int i = num1; i <= num2; i++){
                 System.out.println("[" + i + "] = " + memory[i]);
             }
+            System.out.println();
         }
 
     }

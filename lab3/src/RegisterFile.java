@@ -36,7 +36,7 @@ public class RegisterFile {
     }
 
     public static void dumpRegs(){
-        System.out.println( "\n pc = " + lab3.counter + "\n" +
+        System.out.println( "\npc = " + lab3.counter + "\n" +
                             "$0 = " + RF.get("$0") + "           " +
                             "$v0 = " + RF.get("$v0")  + "          " +
                             "$v1 = " + RF.get("$v1")  + "          " +
