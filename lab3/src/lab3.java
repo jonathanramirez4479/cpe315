@@ -9,6 +9,7 @@ import java.util.*;
 public class lab3 {
     public static int[] memory = new int[8192]; // data memory
     public static int counter = 0; // program counter
+    public static int maxcount = 0;
     public static void main(String[] args) throws IOException {
         readFile.readFile_main(args[0]);
 
@@ -34,6 +35,8 @@ public class lab3 {
     }
 
     private static void interactiveMode() throws IOException {
+
+
         RegisterFile.initRF(); // init register file
         int instrMemSize = readFile.instructionsList.size();
 
@@ -87,8 +90,8 @@ public class lab3 {
                     OperationsMap.findOp(currentInstr);
                     if(!currentInstr.getType().equals("J")) {
                         counter++;
-                        i--;
                     }
+                    i--;
                 }
                 System.out.println("    " + params[1] +  " instruction(s) executed ");
             }

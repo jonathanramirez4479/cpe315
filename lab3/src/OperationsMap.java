@@ -90,12 +90,25 @@ public class OperationsMap {
         // replace old rt with new rt
         RegisterFile.RF.replace(instr.operands.get(0), rd);
     }
-    public static void SLT(Instructions instr){
-
+    public static void SLT(Instructions instr)
+    {
+        // slt rd, rs, rt
+        // if rs < rt: rd = 1
+        // else rd = 0
+        Integer rs = RegisterFile.RF.get(instr.operands.get(1));
+        Integer rt = RegisterFile.RF.get(instr.operands.get(2));
+        Integer rd;
+        if(rs < rt)
+            rd = 1;
+        else
+            rd = 0;
+        RegisterFile.RF.replace(instr.operands.get(0), rd);
     }
     public static void JR(Instructions instr){
         // gets content of register (operand[0]) and sets it to PC
-        lab3.counter = RegisterFile.RF.get(instr.operands.get(0)) - 1;
+        // jr rs
+        // pc = rs
+        lab3.counter = RegisterFile.RF.get(instr.operands.get(0))-1;
     }
     public static void ADDI(Instructions instr){
         // addi rt, rs, imm
@@ -148,8 +161,9 @@ public class OperationsMap {
     }
     public static void JAL(Instructions instr){
         // Sets $ra to current count, then replaces PC to label
+        // jal target
         int newLocation = readFile.labels.get(instr.operands.get(0)); // get jump location
-        RegisterFile.RF.replace("$ra", lab3.counter); // set $ra to current line
+        RegisterFile.RF.replace("$ra", lab3.counter+1); // set $ra to current line
         lab3.counter = newLocation; //set new location
     }
 }
