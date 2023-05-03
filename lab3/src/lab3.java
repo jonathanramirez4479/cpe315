@@ -1,3 +1,8 @@
+/*
+ * Names: Jonathan Ramirez, Franco Abullarade
+ * Section: 03
+ * Description: Lab 3 MIPS emulator
+ */
 import javax.swing.*;
 import java.io.*;
 // import java.lang.reflect.Array;
