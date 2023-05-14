@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="error with parameters not printing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3/test2.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3/test3.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3/test4.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3/test5.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/test2.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/test3.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/test4.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/test5.asm" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,20 +34,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/jonat/OneDrive/Documents/cpe315/lab4",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jonat/OneDrive/Documents/cpe315/lab4&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
-    <configuration name="lab3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lab3" />
-      <module name="lab3" />
+    <configuration name="lab4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lab4" />
+      <module name="lab4" />
       <option name="PROGRAM_PARAMETERS" value="src\newtest1.asm src\test1Script.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -55,7 +55,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.lab3" />
+        <item itemvalue="Application.lab4" />
       </list>
     </recent_temporary>
   </component>
