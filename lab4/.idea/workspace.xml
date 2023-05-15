@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="error with parameters not printing">
-      <change beforePath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/test2.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/test3.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/test4.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/test5.asm" beforeDir="false" />
+    <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="lab4">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OperationsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OperationsMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ref_out1" beforeDir="false" afterPath="$PROJECT_DIR$/src/ref_out1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test1.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/test1.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test1Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test1Script.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
     <configuration name="lab4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lab4" />
       <module name="lab4" />
-      <option name="PROGRAM_PARAMETERS" value="src\newtest1.asm src\test1Script.txt" />
+      <option name="PROGRAM_PARAMETERS" value="src\test1.asm" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -110,11 +111,29 @@
       <option name="project" value="LOCAL" />
       <updated>1683145122048</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="lab4">
+      <created>1684042978508</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684042978508</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.asm" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="register file" />
@@ -123,6 +142,10 @@
     <MESSAGE value="Added:&#10;- clear memory for cmd c&#10;- formatting" />
     <MESSAGE value="awgsr" />
     <MESSAGE value="error with parameters not printing" />
-    <option name="LAST_COMMIT_MESSAGE" value="error with parameters not printing" />
+    <MESSAGE value="lab4" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab4" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/lab4$lab4.ic" NAME="lab4 Coverage Results" MODIFIED="1684083953436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
