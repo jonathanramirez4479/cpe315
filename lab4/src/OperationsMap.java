@@ -3,44 +3,21 @@ public class OperationsMap {
     public static void findOp(Instructions instr){
         // first we want a function to decide which operation to perform
         instr.checkOperands();
-        if(instr.instruction.equals("addi")){
-            ADDI(instr);
-        }
-        else if(instr.instruction.equals("add")){
-            ADD(instr);
-        }
-        else if(instr.instruction.equals("and")){
-            AND(instr);
-        }
-        else if(instr.instruction.equals("sub")){
-            SUB(instr);
-        }
-        else if(instr.instruction.equals("or")){
-            OR(instr);
-        }
-        else if(instr.instruction.equals("sll")){
-            SLL(instr);
-        }
-        else if(instr.instruction.equals("lw")){
-            LW(instr);
-        }
-        else if(instr.instruction.equals("sw")){
-            SW(instr);
-        }
-        else if(instr.instruction.equals("bne")){
-            BNE(instr);
-        }
-        else if(instr.instruction.equals("beq")){
-            BEQ(instr);
-        } else if (instr.instruction.equals("j")) {
-            J(instr);
-        } else if (instr.instruction.equals("jr")) {
-            JR(instr);
-        } else if (instr.instruction.equals("slt")) {
-            SLT(instr);
-        } else if (instr.instruction.equals("jal")) {
-            JAL(instr);
-
+        switch (instr.instruction) {
+            case "addi" -> ADDI(instr);
+            case "add" -> ADD(instr);
+            case "and" -> AND(instr);
+            case "sub" -> SUB(instr);
+            case "or" -> OR(instr);
+            case "sll" -> SLL(instr);
+            case "lw" -> LW(instr);
+            case "sw" -> SW(instr);
+            case "bne" -> BNE(instr);
+            case "beq" -> BEQ(instr);
+            case "j" -> J(instr);
+            case "jr" -> JR(instr);
+            case "slt" -> SLT(instr);
+            case "jal" -> JAL(instr);
         }
     }
     public static void ADD(Instructions instr){
@@ -107,6 +84,7 @@ public class OperationsMap {
         // jr rs
         // pc = rs
         int new_counter = checkNullInteger(RegisterFile.RF.get(instr.operands.get(0)))-1;
+        instr.jump_loc = new_counter;
         lab4.counter = new_counter;
     }
     public static void ADDI(Instructions instr){
@@ -125,7 +103,9 @@ public class OperationsMap {
         int rt = checkNullInteger(RegisterFile.RF.get(instr.operands.get(1)));
         int offset = checkNullInteger(readFile.labels.get(instr.operands.get(2)));
         if(rt == rs){
-            lab4.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
+//            lab4.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
+            instr.branch_taken = true; // communicate branch was taken
+
         }
     }
     public static void BNE(Instructions instr){
@@ -135,7 +115,9 @@ public class OperationsMap {
         int rt = checkNullInteger(RegisterFile.RF.get(instr.operands.get(1)));
         int offset = checkNullInteger(readFile.labels.get(instr.operands.get(2)));
         if(rt != rs){
-            lab4.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
+//            lab4.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
+            instr.branch_taken = true; // communicate branch was taken
+
         }
     }
     public static void LW(Instructions instr){
@@ -157,12 +139,14 @@ public class OperationsMap {
     public static void J(Instructions instr){
         // Sets PC to corresponding label
         int new_counter = checkNullInteger(readFile.labels.get(instr.operands.get(0)));
+        instr.jump_loc = new_counter;
         lab4.counter = new_counter;
     }
     public static void JAL(Instructions instr){
         // Sets $ra to current count, then replaces PC to label
         // jal target
         int newLocation = checkNullInteger(readFile.labels.get(instr.operands.get(0))); // get jump location
+        instr.jump_loc = newLocation;
         RegisterFile.RF.replace("$ra", lab4.counter+1); // set $ra to next instr
         lab4.counter = newLocation; //set new location
     }

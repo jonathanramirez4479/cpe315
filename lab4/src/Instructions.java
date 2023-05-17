@@ -9,11 +9,18 @@ public class Instructions {
     public String binary;
     private String type;
 
+    public boolean branch_taken;
+
+    int jump_loc;
+
+
     public Instructions(String instruction, ArrayList<String> operands, int line) {
         this.instruction = instruction;
         this.operands = operands;
         this.line = line;
         this.type = this.setType();
+        this.branch_taken = false; // default to false
+        this.jump_loc = 0;
     }
 
     public String getInstruction() {
@@ -22,6 +29,11 @@ public class Instructions {
 
     public void setInstruction(String instruction) {
         this.instruction = instruction;
+    }
+
+    @Override
+    public String toString() {
+        return this.instruction + " " + this.line;
     }
 
     public String getType() {

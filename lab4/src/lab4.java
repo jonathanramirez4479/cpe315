@@ -6,6 +6,7 @@
 import java.io.*;
 // import java.lang.reflect.Array;
 import java.util.*;
+import java.util.concurrent.CyclicBarrier;
 // import java.lang.*;
 // import java.io.*;
 //CHanging for github
@@ -16,6 +17,10 @@ public class lab4 {
     public static int counter = 0; // program counter
     public static int simCounter = 0; // cpu simulator counter
     public static int cycleCount = 0; // cycle count for the program
+
+    public static int instrCount = 0; // cycle count for the program
+
+
     public static void main(String[] args) throws IOException {
         pipeReg[0] = "empty";
         pipeReg[1] = "empty";
@@ -83,11 +88,11 @@ public class lab4 {
         }
         else if(params[0].trim().equalsIgnoreCase("s")){
             // single step through the program
-            // if only s
             if(counter == readFile.instructionsList.size()){
                 System.out.println("Sorry, all instructions have been executed");
                 return;
             }
+            // if only s
             if(params.length == 1) {
                 Instructions currentInstr = readFile.instructionsList.get(counter);
                 OperationsMap.findOp(currentInstr);
@@ -116,7 +121,8 @@ public class lab4 {
             {
                 Instructions currentInstr = readFile.instructionsList.get(counter);
                 OperationsMap.findOp(currentInstr);
-                instrToPipe(currentInstr.instruction);
+                instrToPipe(currentInstr.instruction );
+                System.out.println(currentInstr.instruction+ " " + instrCount);
                 if(!currentInstr.getType().equals("J"))
                 {
                     counter++;
@@ -124,11 +130,24 @@ public class lab4 {
             }
             // program finished - add the remaining instructions (in the pipe) to the cycle count
             cycleCount += pipeReg.length;
-            System.out.println("cycle count: " + cycleCount);
+            System.out.println("Program Complete");
+            double cpi = Math.round(((double) cycleCount /instrCount) * 1000.0) / 1000.0;
+            System.out.println("CPI = "+ cpi +"\tCycles = " + cycleCount + "\tInstructions = " + instrCount);
+            System.out.println("cycle count = " + cycleCount);
+            System.out.println("Instructions = " + instrCount);
+
         }
         else if (params[0].trim().equalsIgnoreCase("c")){
             // clear registers, memory and set counter to 0
             counter = 0;
+            cycleCount =0;
+            instrCount = 0;
+            simCounter = 0;
+            pipeReg[0] = "empty";
+            pipeReg[1] = "empty";
+            pipeReg[2] = "empty";
+            pipeReg[3] = "empty";
+
             RegisterFile.clearRegs(); // calls initRF
             Arrays.fill(memory, 0); // clears memory
             System.out.println("        Simulator reset\n");
@@ -145,6 +164,9 @@ public class lab4 {
                 System.out.println("[" + i + "] = " + memory[i]);
             }
             System.out.println();
+        } else if(params[0].trim().equalsIgnoreCase("p")){
+            // show pipeline registers
+            showPipe();
         }
     }
 
@@ -181,7 +203,7 @@ public class lab4 {
             String lw_rt = lw_instr.operands.get(0);
             String instr_rs = curr_instr.operands.get(1);
             String instr_rt = curr_instr.operands.get(2);
-
+            // if the lw rt == current rs or rt, we need a 1 cycle stall
             if(lw_rt.equalsIgnoreCase(instr_rs) || lw_rt.equalsIgnoreCase(instr_rt))
             {
                 // STALL
@@ -193,17 +215,59 @@ public class lab4 {
             }
             else
                 normalInsert(newInstr);
-        }
-        else
+        } else
             normalInsert(newInstr);
+// #########################################BRANCHES####################################################################
+        // not apart if else because we check if branch in the exe/mem reg
+        if (pipeReg[3].equals("bne") || pipeReg[3].equals("beq")) { // if branch instr in exe/mem
+            // Note branch instructions:
+            // bne/beq rs, rt, offset
+            //if branch taken -- squash next 3 instruction and
+            Instructions branch_instr = readFile.instructionsList.get(simCounter - 4); // get branch instr in exe/mem
+            if (branch_instr.branch_taken) {
+                //if branch is taken, squash next three instructions
+                pipeReg[2] = "squash";
+                pipeReg[1] = "squash";
+                pipeReg[0] = "squash";
+                int offset = readFile.labels.get(branch_instr.operands.get(2));
+                counter = offset - 1; // move to new counter
+                instrCount -= 3;
+            }
+        }
+// ###########################################JUMPS#####################################################################
+        if(pipeReg[1].equals("j") || pipeReg[1].equals("jal") || pipeReg[1].equals("jr")){
+            // if unconditional jump is found in ID/EXE, create a squash buffer
+            Instructions j_instr = readFile.instructionsList.get(simCounter - 2);
+            pipeReg[0] = "squash"; // new instruction is squashed
+            simCounter = j_instr.jump_loc;
+            counter = simCounter - 1; //go back 1 pc to put in new instruction
+            instrCount --;
+            /* TODO: fix counter jumps to correct location
+            Instructions j_instr = readFile.instructionsList.get(simCounter-2); // j instr
+            if(j_instr.instruction.equalsIgnoreCase("j")){
+                counter = readFile.labels.get(j_instr.operands.get(0));
+            } else if (j_instr.instruction.equalsIgnoreCase("jal")) {
+                int newLocation = readFile.labels.get(j_instr.operands.get(0)); // get jump location
+                RegisterFile.RF.replace("$ra", counter+1); // set $ra to next instr
+                counter = newLocation; //set new location
+            } else if (j_instr.instruction.equalsIgnoreCase("jr")) {
+                counter = RegisterFile.RF.get(j_instr.operands.get(0))-1;
+            }
+            instrCount --;
+        }
+             */
+        }
     }
     public static void normalInsert(String newInstr)
     {
+        //This function adds a new instruction to IF pipeline...
+        // ...while shifting the previous elements down the pipeline
         String[] firstThree = new String[pipeReg.length - 1];
+        // gather previous pipeline
         firstThree[0] = pipeReg[0];
         firstThree[1] = pipeReg[1];
         firstThree[2] = pipeReg[2];
-
+        // update new pipeline
         pipeReg[0] = newInstr;
         pipeReg[1] = firstThree[0];
         pipeReg[2] = firstThree[1];
@@ -211,5 +275,6 @@ public class lab4 {
 
         simCounter++;
         cycleCount++;
+        instrCount ++;
     }
 }
