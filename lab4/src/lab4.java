@@ -30,6 +30,7 @@ public class lab4 {
 
         //Determine Mode
         if(args.length == 1){
+            System.out.println(readFile.labels.toString());
             interactiveMode();
         }
         else ScriptMode(args[1]);
@@ -122,7 +123,7 @@ public class lab4 {
                 Instructions currentInstr = readFile.instructionsList.get(counter);
                 OperationsMap.findOp(currentInstr);
                 instrToPipe(currentInstr.instruction );
-                System.out.println(currentInstr.instruction+ " " + instrCount);
+//                System.out.println(currentInstr.instruction+ " " + instrCount);
                 if(!currentInstr.getType().equals("J"))
                 {
                     counter++;
@@ -133,8 +134,6 @@ public class lab4 {
             System.out.println("Program Complete");
             double cpi = Math.round(((double) cycleCount /instrCount) * 1000.0) / 1000.0;
             System.out.println("CPI = "+ cpi +"\tCycles = " + cycleCount + "\tInstructions = " + instrCount);
-            System.out.println("cycle count = " + cycleCount);
-            System.out.println("Instructions = " + instrCount);
 
         }
         else if (params[0].trim().equalsIgnoreCase("c")){
@@ -219,6 +218,12 @@ public class lab4 {
             normalInsert(newInstr);
 // #########################################BRANCHES####################################################################
         // not apart if else because we check if branch in the exe/mem reg
+        if(pipeReg[0].equals("bne") || pipeReg[0].equals("beq")){
+            // We need to ensure that simulator is still main PC.
+            // we do not want to branch, then fetch the next instr ...
+            // instead, we want to fetch the next instr DIRECTLY after branch instr
+            counter = simCounter -1 ;
+        }
         if (pipeReg[3].equals("bne") || pipeReg[3].equals("beq")) { // if branch instr in exe/mem
             // Note branch instructions:
             // bne/beq rs, rt, offset

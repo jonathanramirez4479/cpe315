@@ -103,7 +103,7 @@ public class OperationsMap {
         int rt = checkNullInteger(RegisterFile.RF.get(instr.operands.get(1)));
         int offset = checkNullInteger(readFile.labels.get(instr.operands.get(2)));
         if(rt == rs){
-//            lab4.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
+            lab4.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
             instr.branch_taken = true; // communicate branch was taken
 
         }
@@ -115,7 +115,7 @@ public class OperationsMap {
         int rt = checkNullInteger(RegisterFile.RF.get(instr.operands.get(1)));
         int offset = checkNullInteger(readFile.labels.get(instr.operands.get(2)));
         if(rt != rs){
-//            lab4.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
+            lab4.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
             instr.branch_taken = true; // communicate branch was taken
 
         }
