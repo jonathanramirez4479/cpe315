@@ -1,34 +1,20 @@
-# compute fibonacci numbers
-# the sixth number is stored in $v0 when the program completes
+# test2
+# CPI: 1.727 Cycles: 19 Instructions: 11
 
-addi $a0, $0, 6	# input argument
-addi $sp, $0, 4095	# initialize stack pointer
-jal fibonacci
-j end
+j next		# 1 cycle penalty
+equal1:	addi $a0, $0, 1
 
-fibonacci:	addi $t0, $0, 3
-		slt $t1, $a0, $t0
-		bne $0, $t1, basecase	# check if argument is less than 3
+next:	addi $a0, $0, 100
+	addi $a1, $0, 101
+	beq $a0, $a1, equal1	# fall through
+	addi $a0, $0, 101
+	beq $a0, $a1, equal2	# taken branch
+	addi $t0, $t0, 1
+	addi $t0, $t0, 1
+	addi $t0, $t0, 1
 
-		addi $sp, $sp, -3
-		sw $a0, 0($sp)
-		sw $ra, 1($sp)
-		addi $a0, $a0, -1
-		jal fibonacci		# compute fibonacci(n-1)
-
-		sw $v0, 2($sp)
-		lw $a0, 0($sp)
-		addi $a0, $a0, -2
-		jal fibonacci		# compute fibonacci(n-2)
-		lw $t0, 2($sp)
-		add $v0, $v0, $t0
-
-		lw $ra, 1($sp)
-		addi $sp, $sp, 3
-		jr $ra
-
-basecase:	addi $v0, $0, 1
-		jr $ra
-
-
-end: add $0, $0, $0
+equal2:	add $a0, $0, $0
+  add $a0, $0, $0
+  add $a0, $0, $0
+  add $a0, $0, $0
+  add $a0, $0, $0

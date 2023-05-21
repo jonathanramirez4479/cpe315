@@ -9,8 +9,11 @@ public class Instructions {
     public String binary;
     private String type;
 
+    public boolean lw_stall = false;
+
     public boolean branch_taken;
 
+    public int branch_loc;
     int jump_loc;
 
 
@@ -20,7 +23,6 @@ public class Instructions {
         this.line = line;
         this.type = this.setType();
         this.branch_taken = false; // default to false
-        this.jump_loc = 0;
     }
 
     public String getInstruction() {

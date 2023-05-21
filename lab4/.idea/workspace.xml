@@ -4,13 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="lab4">
+    <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="Added:&#10;    respective buffers for J and branch instructions&#10;    Test2 Passing&#10;Bugs:&#10;   For fibonacci, I believe that it is getting stuck because emulator and simulator reg values are out of sync? It is supposed to reach only 1198 instructions but fails at 6500+. This means it doesn't hit base case correctly hence it must be a register issue?">
+      <change afterPath="$PROJECT_DIR$/src/Pipeline.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lwcheck.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/lab3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/Init.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/newtest1.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/newtest2.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/newtest3.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/out/production/lab3/test1Script.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/src/Init.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/src/Instructions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/src/readFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/src/test1Script.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4/Instructions.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/Instructions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4/OperationsMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/OperationsMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4/lab4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/lab4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/test2.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4/test3.asm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/test3.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Init.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Instructions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Instructions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Instructions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OperationsMap.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OperationsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OperationsMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegisterFile.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lab4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ref_out1" beforeDir="false" afterPath="$PROJECT_DIR$/src/ref_out1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test1.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/test1.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test1Script.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test1Script.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/readFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ref_out1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ref_out2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ref_out3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test1Script.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/test2.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test2Script.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test3.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/fib10.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test3Script.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +58,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -35,18 +73,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jonat/OneDrive/Documents/cpe315/lab4&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/abull/School/Spring2023/cpe315/lab4/src",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
-  <component name="RunManager">
-    <configuration name="lab4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\abull\School\Spring2023\cpe315\lab4\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.lab4 - fib10">
+    <configuration name="lab4 - fib10" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lab4" />
+      <module name="lab4" />
+      <option name="PROGRAM_PARAMETERS" value="src/test3.asm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="lab4 - test1" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="lab4" />
       <module name="lab4" />
       <option name="PROGRAM_PARAMETERS" value="src\test1.asm" />
@@ -54,9 +105,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="lab4 - test2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lab4" />
+      <module name="lab4" />
+      <option name="PROGRAM_PARAMETERS" value="src/test2.asm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="officehours" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lab4" />
+      <module name="lab4" />
+      <option name="PROGRAM_PARAMETERS" value="src/officehours.asm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.lab4 - test2" />
+      <item itemvalue="Application.lab4 - fib10" />
+      <item itemvalue="Application.officehours" />
+      <item itemvalue="Application.lab4 - test1" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.lab4" />
+        <item itemvalue="Application.lab4 - test1" />
       </list>
     </recent_temporary>
   </component>
@@ -118,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684042978508</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added:&#10;    respective buffers for J and branch instructions&#10;    Test2 Passing&#10;Bugs:&#10;   For fibonacci, I believe that it is getting stuck because emulator and simulator reg values are out of sync? It is supposed to reach only 1198 instructions but fails at 6500+. This means it doesn't hit base case correctly hence it must be a register issue?">
+      <created>1684282673492</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684282673492</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -143,7 +223,8 @@
     <MESSAGE value="awgsr" />
     <MESSAGE value="error with parameters not printing" />
     <MESSAGE value="lab4" />
-    <option name="LAST_COMMIT_MESSAGE" value="lab4" />
+    <MESSAGE value="Added:&#10;    respective buffers for J and branch instructions&#10;    Test2 Passing&#10;Bugs:&#10;   For fibonacci, I believe that it is getting stuck because emulator and simulator reg values are out of sync? It is supposed to reach only 1198 instructions but fails at 6500+. This means it doesn't hit base case correctly hence it must be a register issue?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10;    respective buffers for J and branch instructions&#10;    Test2 Passing&#10;Bugs:&#10;   For fibonacci, I believe that it is getting stuck because emulator and simulator reg values are out of sync? It is supposed to reach only 1198 instructions but fails at 6500+. This means it doesn't hit base case correctly hence it must be a register issue?" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lab4$lab4.ic" NAME="lab4 Coverage Results" MODIFIED="1684083953436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
