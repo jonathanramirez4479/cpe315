@@ -3,7 +3,7 @@
 # 10th fibonacci number = 55
 # CPI = 1.414	cycles = 1694	instructions = 1198
 
-addi $a0, $0, 3	# input argument
+addi $a0, $0, 10	# input argument
 addi $sp, $0, 4095	# initialize stack pointer
 jal fibonacci
 j end
@@ -19,8 +19,7 @@ fibonacci:	addi $t0, $0, 3
 		jal fibonacci		# compute fibonacci(n-1)
 
 		sw $v0, 2($sp)
-		lw $a0, 0($sp)
-		addi $a0, $a0, -2
+ 		addi $a0, $a0, -2
 		jal fibonacci		# compute fibonacci(n-2)
 		lw $t0, 2($sp)
 		add $v0, $v0, $t0

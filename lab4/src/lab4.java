@@ -120,6 +120,25 @@ public class lab4 {
             while(counter < readFile.instructionsList.size()){
                 Instructions currentInstr = readFile.instructionsList.get(counter);
                 newIteration(currentInstr);
+
+                System.out.println("#############################################################");
+                System.out.println("Instr #: " + instrCount);
+
+                pipe.showPipe();
+
+                System.out.println();
+
+                RegisterFile.dumpRegs();
+
+                System.out.println();
+
+                for(int i = 4069; i <= 4095; i++){
+                    System.out.println("[" + i + "] = " + memory[i]);
+                }
+
+                System.out.println();
+
+
                 if(counter == readFile.instructionsList.size()){
                     break;
                 }
