@@ -5,31 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="error with parameters not printing">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3/Init.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3/newtest1.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3/newtest2.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3/newtest3.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab3/test1Script.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Init.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Instructions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/readFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test1Script.txt" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fib10.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab4/src/script1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/Instructions.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/Instructions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/OperationsMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/OperationsMap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab3/Instructions.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab3/Instructions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab3/lab3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab3/lab3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/lab4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/lab4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/ref_out1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/ref_out2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/ref_out3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test1Script.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/test2.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test3.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/test3.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test2Script.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test3.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test3Script.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/src/fib10.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/src/fib10.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/src/lab4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/src/lab4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/src/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/src/test2.asm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -44,6 +60,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2P4CUK5e5xdIEoXnh0hf2wTjVQY" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -53,30 +72,20 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/abull/School/Spring2023/cpe315/lab3",
+    "jdk.selected.JAVA_MODULE": "19",
+    "last_opened_file_path": "C:/Users/jonat/OneDrive/Documents/cpe315/lab3",
     "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="lab3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="lab3" />
       <module name="lab3" />
-      <option name="PROGRAM_PARAMETERS" value="src\newtest1.asm src\test1Script.txt" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="lab3" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="lab3" />
-      <option name="filePath" />
+      <option name="PROGRAM_PARAMETERS" value="src\fib10.asm" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

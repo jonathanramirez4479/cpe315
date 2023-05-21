@@ -1,9 +1,9 @@
 # compute fibonacci numbers
 #
-# 10th fibonacci number = 55
-# CPI = 1.414	cycles = 1694	instructions = 1198
+# 20th fibonacci number = 6765
+# CPI = 1.409	cycles = 209704	instructions = 148818
 
-addi $a0, $0, 10	# input argument
+addi $a0, $0, 20	# input argument
 addi $sp, $0, 4095	# initialize stack pointer
 jal fibonacci
 j end

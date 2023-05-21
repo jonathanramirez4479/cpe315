@@ -18,6 +18,7 @@ public class lab4 {
     public static int counter = 0; // program counter
 
     public static int instrCount = 0;
+    public static int cycles = 0;
     // Init pipeline
     static Pipeline pipe = new Pipeline();
 
@@ -140,11 +141,15 @@ public class lab4 {
 
 
                 if(counter == readFile.instructionsList.size()){
+                    System.out.println(currentInstr.instruction);
+                    System.out.println("we hit a roadblock and exited too early");
                     break;
                 }
             }
             System.out.println("Program complete");
             System.out.println("Instructions = " + instrCount);
+            cycles += 4;  // add remaining cycles
+            System.out.println("cycles = " + cycles);
         }
         else if (params[0].trim().equalsIgnoreCase("c")){
             // clear registers, memory and set counter to 0
@@ -175,7 +180,7 @@ public class lab4 {
             instrCount ++;
         }
         pipe.addInstr(currentInstr);
-
+        cycles++;
         if(!pipe.skip_lw) {
             counter++;
         }
