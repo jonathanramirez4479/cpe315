@@ -21,10 +21,12 @@ public class lab4 {
     // Init pipeline
     static Pipeline pipe = new Pipeline();
 
+    static int pipeCnt = 0;
     public static void main(String[] args) throws IOException {
         readFile.readFile_main(args[0]);
         //Determine Mode
         System.out.println(readFile.labels.toString());
+        RegisterFile.initRF(); // init register file
         if(args.length == 1){
             interactiveMode();
         }
@@ -38,8 +40,8 @@ public class lab4 {
                 // Process each line of the file here
                 String[] param = line.split(" ");
                 System.out.print("mips> ");
-                for(int i = 0; i < param.length; i++){
-                    System.out.print(param[i] + " ");
+                for (String op : param) {
+                    System.out.print(op + " ");
                 }
                 System.out.println();
                 lab3Functions(param);
@@ -52,8 +54,6 @@ public class lab4 {
     private static void interactiveMode() throws IOException {
 
 
-        RegisterFile.initRF(); // init register file
-        int instrMemSize = readFile.instructionsList.size();
 
         while (counter <= readFile.instructionsList.size()){
             System.out.print("mips> ");
@@ -68,14 +68,18 @@ public class lab4 {
         if(params[0].equalsIgnoreCase("h")){
             // show help
             System.out.println(
-                    "\nh = show help\n" +
-                            "d = dump register state\n" +
-                            "s = single step through the program (i.e. execute 1 instruction and stop)\n" +
-                            "s num = step through num instructions of the program\n" +
-                            "r = run until the program ends\n" +
-                            "m num1 num2 = display data memory from location num1 to num2\n" +
-                            "c = clear all registers, memory, and the program counter to 0\n" +
-                            "q = exit the program\n");
+                    """
+
+                            h = show help
+                            d = dump register state
+                            p = show pipeline registers
+                            s = step through a single clock cycle step (i.e. simulate 1 cycle and stop)
+                            s num = step through num clock cycles
+                            r = run until the program ends and display timing summary
+                            m num1 num2 = display data memory from location num1 to num2
+                            c = clear all registers, memory, and the program counter to 0
+                            q = exit the program
+                            """);
         } else if (params[0].trim().equalsIgnoreCase("q")) {
             // quit program
             System.exit(0);
@@ -121,30 +125,17 @@ public class lab4 {
                 Instructions currentInstr = readFile.instructionsList.get(counter);
                 newIteration(currentInstr);
 
-                System.out.println("#############################################################");
-                System.out.println("Instr #: " + instrCount);
-
-                pipe.showPipe();
-
-                System.out.println();
-
-                RegisterFile.dumpRegs();
-
-                System.out.println();
-
-                for(int i = 4069; i <= 4095; i++){
-                    System.out.println("[" + i + "] = " + memory[i]);
-                }
-
-                System.out.println();
-
 
                 if(counter == readFile.instructionsList.size()){
                     break;
                 }
             }
+//            pipe.showPipe();
             System.out.println("Program complete");
-            System.out.println("Instructions = " + instrCount);
+            pipeCnt +=  pipe.pipeReg.length;
+            double cpi = Math.round(((double) pipeCnt/ instrCount) * 1000.0) / 1000.0;
+            String formattedCpi = String.format("%.3f", cpi);
+            System.out.println("CPI = " + formattedCpi + " Cycles = " + pipeCnt + " Instructions = " + instrCount);
         }
         else if (params[0].trim().equalsIgnoreCase("c")){
             // clear registers, memory and set counter to 0
@@ -180,6 +171,7 @@ public class lab4 {
             counter++;
         }
         pipe.checkPipe();
+        pipeCnt ++;
     }
 
 }
