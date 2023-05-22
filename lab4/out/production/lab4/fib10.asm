@@ -19,8 +19,7 @@ fibonacci:	addi $t0, $0, 3
 		jal fibonacci		# compute fibonacci(n-1)
 
 		sw $v0, 2($sp)
-		lw $a0, 0($sp)
-		addi $a0, $a0, -2
+ 		addi $a0, $a0, -2
 		jal fibonacci		# compute fibonacci(n-2)
 		lw $t0, 2($sp)
 		add $v0, $v0, $t0

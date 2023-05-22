@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="- refactored the OperationsMap because our arithmetic operations had errors if a register value was NULL (Integer 0 is null), so I changed the code as necessary for the 0 values to be of type int&#10;&#10;- added showPipe(): shows the pipeline registers&#10;&#10;- added instrToPipe(): takes in a new instruction string as an argument and checks if any delays should be applied&#10;&#10;- added normalInsert(): does a normal insertion of the new string instruction to the pipeline and moves the other instructions as appropriate&#10;&#10;- initialized a new simulator counter which is different from the program count&#10;&#10;- initialized a pipe register array to hold our string instructions in the pipeline">
-      <change afterPath="$PROJECT_DIR$/src/script1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="Added:&#10;    respective buffers for J and branch instructions&#10;    Test2 Passing&#10;Bugs:&#10;   For fibonacci, I believe that it is getting stuck because emulator and simulator reg values are out of sync? It is supposed to reach only 1198 instructions but fails at 6500+. This means it doesn't hit base case correctly hence it must be a register issue?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4/Pipeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/Pipeline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4/fib10.asm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/fib10.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab4/lab4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/lab4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/ref_out1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/ref_out2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/ref_out3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/test1Script.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab4/script1.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/lab4/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/test2.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/test2Script.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/test3.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/test3Script.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fib10.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/fib10.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lab4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/test2.asm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,22 +41,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/jonat/OneDrive/Documents/cpe315/lab3",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jonat/OneDrive/Documents/cpe315/lab3&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\abull\School\Spring2023\cpe315\lab4\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.lab4 - fib10">
+  <component name="RunManager" selected="Application.lab4 - test1">
     <configuration name="lab4 - fib10" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="lab4" />
       <module name="lab4" />
@@ -77,7 +68,7 @@
     <configuration name="lab4 - test1" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="lab4" />
       <module name="lab4" />
-      <option name="PROGRAM_PARAMETERS" value="src\test1.asm" />
+      <option name="PROGRAM_PARAMETERS" value="src\test1.asm src\test1Script.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -85,7 +76,7 @@
     <configuration name="lab4 - test2" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="lab4" />
       <module name="lab4" />
-      <option name="PROGRAM_PARAMETERS" value="src/test2.asm" />
+      <option name="PROGRAM_PARAMETERS" value="src/test2.asm src/test2Script.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

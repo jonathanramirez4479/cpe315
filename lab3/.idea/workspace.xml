@@ -5,25 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="error with parameters not printing">
-      <change afterPath="$PROJECT_DIR$/src/fib10.asm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lab4/src/script1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test1Script.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ref_out2" beforeDir="false" afterPath="$PROJECT_DIR$/src/ref_out2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ref_out3" beforeDir="false" afterPath="$PROJECT_DIR$/src/ref_out3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test1.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/test1.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab3/Instructions.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab3/Instructions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab3/lab3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab3/lab3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/Pipeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/Pipeline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/fib10.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/fib10.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/lab4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/lab4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/ref_out1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/ref_out2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/ref_out3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test1Script.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/script1.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/out/production/lab4/test2.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test2Script.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test3.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/out/production/lab4/test3Script.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/src/fib10.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/src/fib10.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/src/lab4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/src/lab4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab4/src/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../lab4/src/test2.asm" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,31 +61,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "C:/Users/jonat/OneDrive/Documents/cpe315/lab3",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jonat/OneDrive/Documents/cpe315/lab3&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration name="lab3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager" selected="Application.lab3 test3">
+    <configuration name="lab3 test1" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="lab3" />
       <module name="lab3" />
-      <option name="PROGRAM_PARAMETERS" value="src\fib10.asm" />
+      <option name="PROGRAM_PARAMETERS" value="src\test1.asm src\test1Script.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="lab3 test2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lab3" />
+      <module name="lab3" />
+      <option name="PROGRAM_PARAMETERS" value="src\test2.asm src\test2Script.txt" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="lab3 test3" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lab3" />
+      <module name="lab3" />
+      <option name="PROGRAM_PARAMETERS" value="src\test3.asm src\test3Script.txt" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.lab3 test2" />
+      <item itemvalue="Application.lab3 test3" />
+      <item itemvalue="Application.lab3 test1" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.lab3" />
+        <item itemvalue="Application.lab3 test1" />
       </list>
     </recent_temporary>
   </component>
