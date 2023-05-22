@@ -25,7 +25,6 @@ public class lab4 {
     public static void main(String[] args) throws IOException {
         readFile.readFile_main(args[0]);
         //Determine Mode
-        System.out.println(readFile.labels.toString());
         RegisterFile.initRF(); // init register file
         if(args.length == 1){
             interactiveMode();
