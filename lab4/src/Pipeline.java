@@ -3,6 +3,7 @@ public class Pipeline {
     public boolean skip_lw = false;
     public boolean skip_execution = false;
 
+    public int CycleCount = 0;
     public Instructions[] pipeReg = new Instructions[4]; // pipeline registers
     public Pipeline(){
         initPipeReg(); // on new object, init pipeline
@@ -26,13 +27,17 @@ public class Pipeline {
         boolean special = false;
 
         if(skip_lw){
+//            System.out.println("lw stall");
             pipeReg[3] = pipeReg[2];
             pipeReg[2] = pipeReg[1];
             // place stall without updating next instr
             pipeReg[1] = new Instructions("stall", null, 0);
             special = true;
+            CycleCount += 1;
+
         }
         if (pipeReg[2].branch_taken) {
+//            System.out.println("branch squash");
             pipeReg[3] = pipeReg[2];
             pipeReg[2] = new Instructions("squash", null, 0);
             pipeReg[1] = new Instructions("squash", null, 0);
@@ -40,28 +45,32 @@ public class Pipeline {
             lab4.counter = pipeReg[3].branch_loc; // Finally, jump to branch location
             skip_execution = false;
             special = true;
+            CycleCount += 2;
         }
 
         if(pipeReg[0].getType().equals("J") || pipeReg[0].instruction.equals("jr")) {
+//            System.out.println("jump squash");
             pipeReg[3] = pipeReg[2];
             pipeReg[2] = pipeReg[1];
             pipeReg[1] = pipeReg[0];
             pipeReg[0] = new Instructions("squash", null, 0);
             skip_execution = false;
             special = true;
+
         }
         if(!special){
+//            System.out.println("normal insert");
             pipeReg[3] = pipeReg[2];
             pipeReg[2] = pipeReg[1];
             pipeReg[1] = pipeReg[0];
             pipeReg[0] = instr;
+            CycleCount += 1;
         }
     }
 
     public void checkPipe(){ // Once insert is complete, this will check values
         //Check if use-after-load
         if(pipeReg[1].lw_stall) {
-            System.out.println("use-after load");
             skip_lw = true; // Skip next instruction
         }
         // Once lw in exe/mem, the stall is done and we can continue
