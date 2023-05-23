@@ -14,14 +14,21 @@ import java.util.*;
 public class lab5 {
     public static int[] memory = new int[8192]; // data memory
     public static int counter = 0; // program counter
+
+    public static BranchPredictor branchP;
+
     public static void main(String[] args) throws IOException {
         readFile.readFile_main(args[0]);
-
+        RegisterFile.initRF(); // init register file
         //Determine Mode
         if(args.length == 1){
             interactiveMode();
         }
-        else ScriptMode(args[1]);
+
+        else{
+            branchP = new BranchPredictor(args); // make new BranchPredictor obj with default GHR size
+            ScriptMode(args[1]);
+        }
     }
 
     private static void ScriptMode(String filename) {
@@ -45,7 +52,6 @@ public class lab5 {
     private static void interactiveMode() throws IOException {
 
 
-        RegisterFile.initRF(); // init register file
         int instrMemSize = readFile.instructionsList.size();
 
         while (counter <= readFile.instructionsList.size()){
@@ -61,14 +67,17 @@ public class lab5 {
         if(params[0].equalsIgnoreCase("h")){
             // show help
             System.out.println(
-                    "\nh = show help\n" +
-                            "d = dump register state\n" +
-                            "s = single step through the program (i.e. execute 1 instruction and stop)\n" +
-                            "s num = step through num instructions of the program\n" +
-                            "r = run until the program ends\n" +
-                            "m num1 num2 = display data memory from location num1 to num2\n" +
-                            "c = clear all registers, memory, and the program counter to 0\n" +
-                            "q = exit the program\n");
+                    """
+                            h = show help
+                            b = output the branch predictor accuracy
+                            d = dump register state
+                            s = single step through the program (i.e. execute 1 instruction and stop)
+                            s num = step through num instructions of the program
+                            r = run until the program ends
+                            m num1 num2 = display data memory from location num1 to num2
+                            c = clear all registers, memory, and the program counter to 0
+                            q = exit the program
+                            """);
         } else if (params[0].trim().equalsIgnoreCase("q")) {
             // quit program
             System.exit(0);
@@ -85,20 +94,12 @@ public class lab5 {
                 return;
             }
             if(params.length == 1) {
-                Instructions currentInstr = readFile.instructionsList.get(counter);
-                OperationsMap.findOp(currentInstr);
+                newIteration();
                 System.out.println("    1 instruction(s) executed ");
-                if(!currentInstr.getType().equals("J")) {
-                    counter++;
-                }
             }else if (params.length == 2){
                 int i = Integer.parseInt((params[1]));
                 while(i > 0 && counter < readFile.instructionsList.size()){
-                    Instructions currentInstr = readFile.instructionsList.get(counter);
-                    OperationsMap.findOp(currentInstr);
-                    if(!currentInstr.getType().equals("J")) {
-                        counter++;
-                    }
+                    newIteration();
                     i--;
                 }
                 System.out.println("    " + params[1] +  " instruction(s) executed ");
@@ -107,15 +108,12 @@ public class lab5 {
         else if(params[0].trim().equalsIgnoreCase("r")){
             // run until program stops
             while(counter < readFile.instructionsList.size()){
-                Instructions currentInstr = readFile.instructionsList.get(counter);
-                OperationsMap.findOp(currentInstr);
-                if(!currentInstr.getType().equals("J")) {
-                    counter++;
-                }
+                newIteration();
                 if(counter == readFile.instructionsList.size()){
                     break;
                 }
             }
+            System.out.println("Tot num branches: " + BranchPredictor.totalBranches);
         }
         else if (params[0].trim().equalsIgnoreCase("c")){
             // clear registers, memory and set counter to 0
@@ -138,6 +136,14 @@ public class lab5 {
             System.out.println();
         }
 
+    }
+
+    static void newIteration(){
+        Instructions currentInstr = readFile.instructionsList.get(counter);
+        OperationsMap.doOp(currentInstr);
+        if(!currentInstr.getType().equals("J")) {
+            counter++;
+        }
     }
 
 }

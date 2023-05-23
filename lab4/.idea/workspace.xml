@@ -5,13 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3215c38f-d482-4d29-a19c-68e188cde1af" name="Changes" comment="Added:&#10;    respective buffers for J and branch instructions&#10;    Test2 Passing&#10;Bugs:&#10;   For fibonacci, I believe that it is getting stuck because emulator and simulator reg values are out of sync? It is supposed to reach only 1198 instructions but fails at 6500+. This means it doesn't hit base case correctly hence it must be a register issue?">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/Pipeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/Pipeline.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/fib10.asm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/fib10.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/lab4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/lab4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/script1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lab4/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab4/test2.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/lab5.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/out/production/lab5/Init.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/out/production/lab5/Instructions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/out/production/lab5/OperationsMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/out/production/lab5/RegisterFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/out/production/lab5/lab5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/out/production/lab5/readFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/src/Init.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/src/Instructions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/src/OperationsMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/src/RegisterFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/src/lab5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/src/readFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/tests/ref_out1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/tests/ref_out2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/tests/ref_out3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/tests/test1.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/tests/test1Script.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/tests/test2.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/tests/test2Script.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/tests/test3.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab5/lab5/tests/test3Script.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,16 +60,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jonat/OneDrive/Documents/cpe315/lab3&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/abull/School/Spring2023/cpe315/lab5",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\abull\School\Spring2023\cpe315\lab4\src" />

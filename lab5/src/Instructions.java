@@ -8,13 +8,7 @@ public class Instructions {
     public int line;
     public String binary;
     private String type;
-
-    public boolean lw_stall = false;
-
     public boolean branch_taken;
-
-    public int branch_loc;
-    int jump_loc;
 
 
     public Instructions(String instruction, ArrayList<String> operands, int line) {

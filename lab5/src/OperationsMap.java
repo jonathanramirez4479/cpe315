@@ -2,7 +2,7 @@ import java.awt.image.RGBImageFilter;
 
 public class OperationsMap {
     // Map of operations for our simulator
-    public static void findOp(Instructions instr){
+    public static void doOp(Instructions instr){
         // first we want a function to decide which operation to perform
         instr.checkOperands();
         if(instr.instruction.equals("addi")){
@@ -125,7 +125,9 @@ public class OperationsMap {
         Integer rs = RegisterFile.RF.get(instr.operands.get(0));
         Integer rt = RegisterFile.RF.get(instr.operands.get(1));
         Integer offset = readFile.labels.get(instr.operands.get(2));
+        lab5.branchP.checkPrediction(instr);
         if(!rt.equals(rs)){
+            instr.branch_taken = true;
             lab5.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
         }
     }
@@ -135,7 +137,9 @@ public class OperationsMap {
         Integer rs = RegisterFile.RF.get(instr.operands.get(0));
         Integer rt = RegisterFile.RF.get(instr.operands.get(1));
         Integer offset = readFile.labels.get(instr.operands.get(2));
+        lab5.branchP.checkPrediction(instr);
         if(!rt.equals(rs)){
+            instr.branch_taken = true;
             lab5.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
         }
     }
