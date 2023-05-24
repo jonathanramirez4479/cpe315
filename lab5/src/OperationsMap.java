@@ -137,11 +137,11 @@ public class OperationsMap {
         Integer rs = RegisterFile.RF.get(instr.operands.get(0));
         Integer rt = RegisterFile.RF.get(instr.operands.get(1));
         Integer offset = readFile.labels.get(instr.operands.get(2));
-        lab5.branchP.checkPrediction(instr);
         if(!rt.equals(rs)){
             instr.branch_taken = true;
             lab5.counter = offset-1; // set program counter to line of label (account for offset of next iteration)
         }
+        lab5.branchP.checkPrediction(instr);
     }
     public static void LW(Instructions instr){
         // lw rt, imm(rs)

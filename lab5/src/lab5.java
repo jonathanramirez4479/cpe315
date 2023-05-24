@@ -113,7 +113,7 @@ public class lab5 {
                     break;
                 }
             }
-            System.out.println("Tot num branches: " + BranchPredictor.totalBranches);
+            System.out.println("Correct Pred: " + branchP.correctPrediction + " Tot num branches: " + BranchPredictor.totalBranches);
         }
         else if (params[0].trim().equalsIgnoreCase("c")){
             // clear registers, memory and set counter to 0
