@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de6d57ed-a00f-4a60-8f97-b1ed407e68cd" name="Changes" comment="lab5 setup">
+      <change beforePath="$PROJECT_DIR$/../../lab3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QAOurV9FhFTiQunGwU93K4mmrR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/jonat/OneDrive/Documents/cpe315/lab5"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jonat\OneDrive\Documents\cpe315\lab5\lab5\tests" />
+      <recent name="C:\Users\jonat\OneDrive\Documents\cpe315\lab5\lab5\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jonat\OneDrive\Documents\cpe315\lab5\lab5\tests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.lab5 test3">
+    <configuration name="lab5 test1" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lab5" />
+      <module name="lab5" />
+      <option name="PROGRAM_PARAMETERS" value="tests\test1.asm tests\test1Script.txt" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="lab5 test2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lab5" />
+      <module name="lab5" />
+      <option name="PROGRAM_PARAMETERS" value="tests\test2.asm tests\test2Script.txt" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="lab5 test3" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lab5" />
+      <module name="lab5" />
+      <option name="PROGRAM_PARAMETERS" value="tests\test3.asm tests\test3Script.txt" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="lab5" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="lab5" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.lab5 test1" />
+      <item itemvalue="Application.lab5 test2" />
+      <item itemvalue="Application.lab5 test3" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de6d57ed-a00f-4a60-8f97-b1ed407e68cd" name="Changes" comment="" />
+      <created>1684793147537</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684793147537</updated>
+    </task>
+    <task id="LOCAL-00001" summary="lab5 setup">
+      <created>1684794906163</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684794906163</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.asm" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="lab5 setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab5 setup" />
+  </component>
+</project>

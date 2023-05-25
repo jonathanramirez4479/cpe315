@@ -2,7 +2,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 public class BranchPredictor {
-
     public static int totalBranches = 0;
     LinkedList<Integer> GHR;
 
@@ -24,10 +23,7 @@ public class BranchPredictor {
         for (int j: counterTable) {
             counterTable[j] = 0; // per spec init 2 bit counter table to 0
         }
-        GHR.set(0, 1);
-        GHR.set(1, 0);
         System.out.println(GHR);
-        System.out.println(turnGHRintoIndex());
     }
     private int get_GHR_size(String[] args){
         // use command line args to determine size
@@ -51,29 +47,29 @@ public class BranchPredictor {
     }
 
     public void checkPrediction(Instructions instr){
-        totalBranches ++;
+        // false = not taken
+        // true = taken
+        totalBranches++;
         int counterIndex = turnGHRintoIndex();
         int counter_val = counterTable[counterIndex];
-        boolean predictionTaken = counter_val == 2 || counter_val == 3; // True if 10 or 11
-        boolean actualTaken = instr.branch_taken;
-        if(predictionTaken && actualTaken){
-            correctPrediction ++;
+        boolean actual = instr.branch_taken;
+        boolean prediction = false;
+        if(counter_val == 2 || counter_val == 3)// True if 10 or 11
+        {
+            prediction = true;
         }
-        else if (!predictionTaken && !actualTaken){
-            correctPrediction ++;
-        }
-        if (!actualTaken) {
-            if(counter_val != 0) {
-                counterTable[counterIndex] --;
-            }
-            updateGHR(0);
-        }
-        else{ // Taken
-            if(counter_val != 3) {
-                counterTable[counterIndex] ++;
-            }
+        if(actual && counter_val < 3)
+        {
+            counterTable[counterIndex]++;
             updateGHR(1);
         }
+        else if(!actual && counter_val > 0)
+        {
+            counterTable[counterIndex]--;
+            updateGHR(0);
+        }
+        if(prediction == actual)
+            correctPrediction++;
     }
 
     private void updateGHR(int newVal){
