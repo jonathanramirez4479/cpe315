@@ -23,7 +23,6 @@ public class BranchPredictor {
         for (int j: counterTable) {
             counterTable[j] = 0; // per spec init 2 bit counter table to 0
         }
-        System.out.println(GHR);
     }
     private int get_GHR_size(String[] args){
         // use command line args to determine size

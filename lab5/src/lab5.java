@@ -110,10 +110,13 @@ public class lab5 {
                     break;
                 }
             }
-            System.out.println("Correct Pred: " + branchP.correctPrediction + " Tot num branches: " +
-                    BranchPredictor.totalBranches);
-        }
-        else if (params[0].trim().equalsIgnoreCase("c")){
+
+        } else if (params[0].trim().equalsIgnoreCase("b")) {
+            double calcPercent = ((branchP.correctPrediction) * 1.0 / BranchPredictor.totalBranches) * 100;
+            double calcPercentFormatted = Math.round( calcPercent * 100.0) / 100.0;
+            System.out.println("accuracy "+ calcPercentFormatted +"% ("+ branchP.correctPrediction +
+                    " correct predictions, "+ BranchPredictor.totalBranches +" predictions) ");
+        } else if (params[0].trim().equalsIgnoreCase("c")){
             // clear registers, memory and set counter to 0
             counter = 0;
             RegisterFile.clearRegs(); // calls initRF
