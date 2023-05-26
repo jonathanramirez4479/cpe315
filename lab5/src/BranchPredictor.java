@@ -58,14 +58,16 @@ public class BranchPredictor {
         {
             prediction = true;
         }
-        if(actual && counter_val < 3)
+        if(actual)
         {
-            counterTable[counterIndex]++;
+            if(counter_val < 3)
+                counterTable[counterIndex]++;
             updateGHR(1);
         }
-        else if(!actual && counter_val > 0)
+        else if(!actual)
         {
-            counterTable[counterIndex]--;
+            if(counter_val > 0)
+                counterTable[counterIndex]--;
             updateGHR(0);
         }
         if(prediction == actual)
