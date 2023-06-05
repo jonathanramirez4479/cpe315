@@ -10,6 +10,11 @@ public class Address {
     public int DM_2KB_4WB_index;
     public int TwoWay_2KB_1WB_index;
     public int TwoWay_2KB_1WB_tag;
+
+    public int DM_4KB_1WB_index;
+    public int DM_4KB_1WB_tag;
+
+
     public Address(int addr, int line){
         this.addr = addr;
         this.line = line;
@@ -30,20 +35,24 @@ public class Address {
         // Address = [ tag 21bits | index 9bits | byte offset 2bits ]
         DM_2KB_1WB_index = ( this.addr >> 2 ) & 0x1FF ;
 
-        DM_2KB_1WB_tag   = ( this.addr >> 11);
+        DM_2KB_1WB_tag   = ( this.addr >>> 11);
         // DM_2KB_2WB
         // Address = [ tag 21bits | index 8bits | blk offset 1bit | byte offset 2bits ]
         DM_2KB_2WB_index = ( this.addr >> 3 ) & 0xFF ;
-        DM_2KB_2WB_tag   = ( this.addr >> 11);
+        DM_2KB_2WB_tag   = ( this.addr >>> 11);
         // DM_2KB_4WB
         // Address = [ tag 21bits | index 7bits | blk offset 2bits | byte offset 2bits ]
         DM_2KB_4WB_index = ( this.addr >> 4 ) & 0x7F ;
-        DM_2KB_4WB_tag   = ( this.addr >> 11);
+        DM_2KB_4WB_tag   = ( this.addr >>> 11);
 
         // TwoWay_2KB_1WB
-        // Address = [ tag 22bits | index 8bits  | byte offset 2bits ] TODO check if this is right
+        // Address = [ tag 22bits | index 8bits  | byte offset 2bits ]
         TwoWay_2KB_1WB_index = ( this.addr >> 2 ) & 0xFF;
-        TwoWay_2KB_1WB_tag = ( this.addr >> 10);
+        TwoWay_2KB_1WB_tag = ( this.addr >>> 10);
 
+        // DM_4KB_1WB
+        // Address = [tag 20bits | index 10 bits | byte offset 2 bits ]
+        DM_4KB_1WB_index = ( this.addr >> 2) & 0x3FF;
+        DM_4KB_1WB_tag   = ( this.addr >>> 12);
     }
 }
