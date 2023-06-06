@@ -20,8 +20,10 @@ public class Caches {
 
     public static HashMap<Integer, int[][]> TwoWay_2KB_1WB = new HashMap<>();
     public static int TwoWay_2KB_1WB_hits = 0;
-    public static HashMap<Integer, int[]> FourWay_4KB_1WB = new HashMap<>();
-    public static HashMap<Integer, int[]> FourWay_4KB_4WB = new HashMap<>();
+    public static HashMap<Integer, int[][]> FourWay_2KB_1WB = new HashMap<>();
+    public static int FourWay_2KB_1WB_hits = 0;
+    public static HashMap<Integer, int[][]> FourWay_2KB_4WB = new HashMap<>();
+    public static int FourWay_2KB_4WB_hits = 0;
     public static HashMap<Integer, int[]> DM_4KB_1WB = new HashMap<>();
     public static int DM_4KB_1WB_hits = 0;
 
@@ -45,11 +47,15 @@ public class Caches {
         }
         for(int i = 0; i < (1<<7); i++){
             DM_2KB_4WB.put(i, new int[]{0, 0});
+            FourWay_2KB_1WB.put(i, new int[][]{ {0, 0}, {0, 0}, {0, 0}, {0, 0} } );
         }
 
         for(int i = 0; i < (1 << 10); i++){
             DM_4KB_1WB.put(i, new int[]{0,0});
          }
+
+        for(int i = 0; i < (1 << 5); i++)
+            FourWay_2KB_4WB.put(i, new int[][]{ {0, 0}, {0, 0}, {0, 0}, {0, 0} });
     }
 
     public static void insertAddress(Address addr) {
@@ -76,6 +82,8 @@ public class Caches {
         }
 
         Insert_TwoWay_2KB_1WB(addr);
+        Insert_FourWay_2KB_1WB(addr);
+        Insert_FourWay_2KB_4WB(addr);
 
         if (DM_4KB_1WB.get(addr.DM_4KB_1WB_index)[1] != addr.DM_4KB_1WB_tag) {
             // If old tag at index != old tag --> Miss
@@ -124,6 +132,110 @@ public class Caches {
         }
     }
 
+    private static void Insert_FourWay_2KB_1WB(Address addr)
+    {
+        // { {line number, tag}, {line number, tag}, {line number, tag}, {line number, tag} }
+        if(FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[0][1] == addr.FourWay_2KB_1WB_tag)
+        {
+            FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[0][0] = addr.line;
+            FourWay_2KB_1WB_hits++;
+            return;
+        }
+        if(FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[1][1] == addr.FourWay_2KB_1WB_tag)
+        {
+            FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[1][0] = addr.line;
+            FourWay_2KB_1WB_hits++;
+            return;
+        }
+        if(FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[2][1] == addr.FourWay_2KB_1WB_tag)
+        {
+            FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[2][0] = addr.line;
+            FourWay_2KB_1WB_hits++;
+            return;
+        }
+        if(FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[3][1] == addr.FourWay_2KB_1WB_tag)
+        {
+            FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[3][0] = addr.line;
+            FourWay_2KB_1WB_hits++;
+            return;
+        }
+        // at this point, all were misses
+        // Determine which cache was LRU
+        int cache1_Line = FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[0][0];
+        int cache2_Line = FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[1][0];
+        int cache3_Line = FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[2][0];
+        int cache4_Line = FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[3][0];
+
+        int[] cache_lines = {cache1_Line, cache2_Line, cache3_Line, cache4_Line};
+        int min = cache1_Line;
+        for(int line : cache_lines) // get min (LRU)
+        {
+            if(line < min)
+                min = line;
+        }
+        // check for LRU, and replace corresponding cache:
+        if(min == cache1_Line)
+            FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[0] = new int[]{addr.line, addr.FourWay_2KB_1WB_tag};
+        else if(min == cache2_Line)
+            FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[1] = new int[]{addr.line, addr.FourWay_2KB_1WB_tag};
+        else if(min == cache3_Line)
+            FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[2] = new int[]{addr.line, addr.FourWay_2KB_1WB_tag};
+        else if(min == cache4_Line)
+            FourWay_2KB_1WB.get(addr.FourWay_2KB_1WB_index)[3] = new int[]{addr.line, addr.FourWay_2KB_1WB_tag};
+    }
+
+    private static void Insert_FourWay_2KB_4WB(Address addr)
+    {
+        // { {line number, tag}, {line number, tag}, {line number, tag}, {line number, tag} }
+        if(FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[0][1] == addr.FourWay_2KB_4WB_tag)
+        {
+            FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[0][0] = addr.line;
+            FourWay_2KB_4WB_hits++;
+            return;
+        }
+        if(FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[1][1] == addr.FourWay_2KB_4WB_tag)
+        {
+            FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[1][0] = addr.line;
+            FourWay_2KB_4WB_hits++;
+            return;
+        }
+        if(FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[2][1] == addr.FourWay_2KB_4WB_tag)
+        {
+            FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[2][0] = addr.line;
+            FourWay_2KB_4WB_hits++;
+            return;
+        }
+        if(FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[3][1] == addr.FourWay_2KB_4WB_tag)
+        {
+            FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[3][0] = addr.line;
+            FourWay_2KB_4WB_hits++;
+            return;
+        }
+        // at this point, all were misses
+        // Determine which cache was LRU
+        int cache1_Line = FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[0][0];
+        int cache2_Line = FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[1][0];
+        int cache3_Line = FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[2][0];
+        int cache4_Line = FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[3][0];
+
+        int[] cache_lines = {cache1_Line, cache2_Line, cache3_Line, cache4_Line};
+        int min = cache1_Line;
+        for(int line : cache_lines) // get min (LRU)
+        {
+            if(line < min)
+                min = line;
+        }
+        // check for LRU, and replace corresponding cache:
+        if(min == cache1_Line)
+            FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[0] = new int[]{addr.line, addr.FourWay_2KB_4WB_tag};
+        else if(min == cache2_Line)
+            FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[1] = new int[]{addr.line, addr.FourWay_2KB_4WB_tag};
+        else if(min == cache3_Line)
+            FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[2] = new int[]{addr.line, addr.FourWay_2KB_4WB_tag};
+        else if(min == cache4_Line)
+            FourWay_2KB_4WB.get(addr.FourWay_2KB_4WB_index)[3] = new int[]{addr.line, addr.FourWay_2KB_4WB_tag};
+    }
+
     public static void printCaches(){
          DecimalFormat hundredth = new DecimalFormat("0.00");
          System.out.println(
@@ -147,7 +259,16 @@ public class Caches {
                          "Hits " + TwoWay_2KB_1WB_hits + " Hit Rate " +
                          hundredth.format(Math.round((((double) TwoWay_2KB_1WB_hits /cacheAccesses) * 100) * 100.0) / 100.0)+"%\n"+
                  "---------------------------\n"+
-
+                 "Cache #5\n"+
+                 "Cache Size: 2048B\tAssociativity: 4\tBlock size: 1\n" +
+                 "Hits " + FourWay_2KB_1WB_hits + " Hit Rate " +
+                 hundredth.format(Math.round((((double) FourWay_2KB_1WB_hits /cacheAccesses) * 100) * 100.0) / 100.0)+"%\n"+
+                 "---------------------------\n"+
+                 "Cache #6\n"+
+                 "Cache Size: 2048B\tAssociativity: 4\tBlock size: 4\n" +
+                 "Hits " + FourWay_2KB_4WB_hits + " Hit Rate " +
+                 hundredth.format(Math.round((((double) FourWay_2KB_4WB_hits /cacheAccesses) * 100) * 100.0) / 100.0)+"%\n"+
+                 "---------------------------\n"+
 
                  "Cache #7\n"+
                  "Cache Size: 4096B\tAssociativity: 1\tBlock size: 1\n" +

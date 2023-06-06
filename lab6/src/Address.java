@@ -14,6 +14,11 @@ public class Address {
     public int DM_4KB_1WB_index;
     public int DM_4KB_1WB_tag;
 
+    public int FourWay_2KB_1WB_index;
+    public int FourWay_2KB_1WB_tag;
+
+    public int FourWay_2KB_4WB_index;
+    public int FourWay_2KB_4WB_tag;
 
     public Address(int addr, int line){
         this.addr = addr;
@@ -54,5 +59,15 @@ public class Address {
         // Address = [tag 20bits | index 10 bits | byte offset 2 bits ]
         DM_4KB_1WB_index = ( this.addr >> 2) & 0x3FF;
         DM_4KB_1WB_tag   = ( this.addr >>> 12);
+
+        // FourWay_2KB_1WB
+        // Address = [ tag 23 bits | index 7 bits | byte offset 2 bits ]
+        FourWay_2KB_1WB_index = ( this.addr >> 2) & 0x7F;
+        FourWay_2KB_1WB_tag = ( this.addr >>> 9);
+
+        // FourWay_2KB_4WB
+        // Address = [ tag 23 bits | index 5 bits | block offset 2 bits | byte offset 2 bits ]
+        FourWay_2KB_4WB_index = ( this.addr >> 4) & 0x1F;
+        FourWay_2KB_4WB_tag = ( this.addr >>> 9);
     }
 }
