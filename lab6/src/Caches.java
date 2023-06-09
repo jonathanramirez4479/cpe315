@@ -241,17 +241,17 @@ public class Caches {
          System.out.println(
                  "Cache #1\n"+
                  "Cache Size: 2048B\tAssociativity: 1\tBlock size: 1\n" +
-                 "Hits " + DM_2KB_1WB_hits + " Hit Rate " +
+                 "Hits: " + DM_2KB_1WB_hits + " Hit Rate: " +
                      hundredth.format(Math.round((((double) DM_2KB_1WB_hits /cacheAccesses) * 100) * 100.00) / 100.00) +"%\n"+
                  "---------------------------\n"+
                  "Cache #2\n"+
                  "Cache Size: 2048B\tAssociativity: 1\tBlock size: 2\n" +
-                 "Hits " + DM_2KB_2WB_hits + " Hit Rate " +
+                 "Hits: " + DM_2KB_2WB_hits + " Hit Rate: " +
                  hundredth.format(Math.round((((double) DM_2KB_2WB_hits /cacheAccesses) * 100) * 100.0) / 100.0)+"%\n"+
                  "---------------------------\n"+
                  "Cache #3\n"+
                  "Cache Size: 2048B\tAssociativity: 1\tBlock size: 4\n" +
-                 "Hits " + DM_2KB_4WB_hits + " Hit Rate " +
+                 "Hits: " + DM_2KB_4WB_hits + " Hit Rate: " +
                  hundredth.format(Math.round((((double) DM_2KB_4WB_hits /cacheAccesses) * 100) * 100.0) / 100.0)+"%\n"+
                  "---------------------------\n"+
                  "Cache #4\n"+
@@ -261,18 +261,18 @@ public class Caches {
                  "---------------------------\n"+
                  "Cache #5\n"+
                  "Cache Size: 2048B\tAssociativity: 4\tBlock size: 1\n" +
-                 "Hits " + FourWay_2KB_1WB_hits + " Hit Rate " +
+                 "Hits: " + FourWay_2KB_1WB_hits + " Hit Rate: " +
                  hundredth.format(Math.round((((double) FourWay_2KB_1WB_hits /cacheAccesses) * 100) * 100.0) / 100.0)+"%\n"+
                  "---------------------------\n"+
                  "Cache #6\n"+
                  "Cache Size: 2048B\tAssociativity: 4\tBlock size: 4\n" +
-                 "Hits " + FourWay_2KB_4WB_hits + " Hit Rate " +
+                 "Hits: " + FourWay_2KB_4WB_hits + " Hit Rate: " +
                  hundredth.format(Math.round((((double) FourWay_2KB_4WB_hits /cacheAccesses) * 100) * 100.0) / 100.0)+"%\n"+
                  "---------------------------\n"+
 
                  "Cache #7\n"+
                  "Cache Size: 4096B\tAssociativity: 1\tBlock size: 1\n" +
-                 "Hits " + DM_4KB_1WB_hits + " Hit Rate " +
+                 "Hits: " + DM_4KB_1WB_hits + " Hit Rate: " +
                  hundredth.format(Math.round((((double) DM_4KB_1WB_hits /cacheAccesses) * 100) * 100.0) / 100.0)+"%\n"+
                  "---------------------------\n"
 
